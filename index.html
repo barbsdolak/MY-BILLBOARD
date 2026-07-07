@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What It's Like to Work With Barbs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,700;9..144,900&family=Inter:wght@300;400;500;600;700&family=Architects+Daughter&family=Comforter+Brush&display=block" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --black: #080808;
+            --off-white: #f0f0ee;
+            --warm-gray: #b0a99a;
+            --font-display: 'Bebas Neue', sans-serif;
+            --font-serif: 'Fraunces', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+
+        body {
+            background: var(--black);
+            color: var(--off-white);
+            font-family: var(--font-sans);
+        }
+
+        /* ======= HERO ======= */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 2.5rem 8vw 8rem;
+            position: relative;
+            overflow: hidden;
+            background-image: url('./Barbs1_V2.PNG');
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            background-position: top center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.80) 40%, rgba(8,8,8,0.3) 70%, rgba(8,8,8,0.1) 100%);
+            z-index: 1;
+        }
+
+
+        .hero > *:not(.hero-overlay) {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-headline {
+            font-family: var(--font-display);
+            font-size: clamp(4.5rem, 13vw, 16rem);
+            line-height: 0.88;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-headline .clip {
+            overflow: hidden;
+            display: block;
+        }
+
+        @keyframes clipUp {
+            from { transform: translateY(110%); }
+            to   { transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-headline .clip span {
+            display: block;
+            animation: clipUp 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        }
+
+        .hero-headline .clip:nth-child(1) span { animation-delay: 0.1s; }
+        .hero-headline .clip:nth-child(2) span { animation-delay: 0.45s; }
+        .hero-headline .clip:nth-child(3) span { animation-delay: 0.8s; }
+
+        .hero-eyebrow {
+            font-size: 0.9rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #e2e0de;
+            margin: 0 0 1.2rem 0;
+            padding-left: 3px;
+        }
+
+        .hero-sub {
+            font-family: var(--font-serif);
+
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            color: #ffffff;
+            margin-top: 1.2rem;
+            max-width: 44ch;
+            line-height: 1.6;
+            letter-spacing: 0.03em;
+            opacity: 0;
+            animation: fadeInUp 0.9s ease both;
+            animation-delay: 0.65s;
+        }
+
+        .scroll-cue {
+            position: absolute;
+            bottom: 3rem;
+            right: 8vw;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            opacity: 0;
+            animation: fadeInUp 0.7s ease both;
+            animation-delay: 1s;
+        }
+
+        .scroll-cue span {
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--warm-gray);
+            writing-mode: vertical-lr;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 80px;
+            background: linear-gradient(to bottom, var(--off-white), transparent);
+            animation: linePulse 2.5s ease-in-out infinite;
+        }
+
+        @keyframes linePulse {
+            0%, 100% { opacity: 1; transform: scaleY(1); transform-origin: top; }
+            50% { opacity: 0.2; transform: scaleY(0.4); transform-origin: top; }
+        }
+
+        /* ======= MARQUEE ======= */
+        .marquee {
+            padding: 1rem 0;
+            overflow: hidden;
+            white-space: nowrap;
+            user-select: none;
+        }
+
+        .marquee.on-dark { background: var(--black); border-top: 1px solid #1a1a1a; border-bottom: 1px solid #2e2e2b; box-shadow: inset 0 -18px 28px rgba(50, 50, 46, 0.55); }
+        .marquee.on-light { background: var(--off-white); }
+
+        .marquee-track {
+            display: inline-flex;
+            animation: marqueeRoll 22s linear infinite;
+        }
+
+        .marquee.reverse .marquee-track { animation-direction: reverse; }
+
+        .marquee-track span {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            letter-spacing: 0.12em;
+            padding: 0 2.5rem;
+        }
+
+        .marquee-sep {
+            padding: 0;
+        }
+
+        .marquee.on-dark .marquee-track span { color: var(--off-white); }
+        .marquee.on-light .marquee-track span { color: var(--black); }
+
+        /* ======= BANNER 3 — LIGHT / GRADIENT BORDER ======= */
+        #marquee-ch3 {
+            background: #ffffff;
+            border-top: 1.5px solid rgba(8,8,8,0.25);
+            border-bottom: 1.5px solid rgba(8,8,8,0.25);
+        }
+
+        /* ======= BANNER 2 — OXBLOOD ======= */
+        #marquee-sizzle {
+            padding: 0.35rem 0;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            background: linear-gradient(
+                to bottom,
+                #343432 0%,
+                #1a1a18 10%,
+                #0e0e0c 25%,
+                #080808 35%,
+                #080808 65%,
+                #0e0e0c 75%,
+                #1a1a18 90%,
+                #343432 100%
+            );
+            border-top: 1px solid #333330;
+            border-bottom: 1px solid #333330;
+            box-shadow: inset 0 8px 24px rgba(0,0,0,0.6), inset 0 -8px 24px rgba(0,0,0,0.6);
+        }
+        #marquee-sizzle::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 4in;
+            height: 1px;
+            background: linear-gradient(to right, transparent 0%, #FFE500 100%);
+            z-index: 2;
+            pointer-events: none;
+        }
+        #marquee-sizzle .marquee-track span {
+            font-size: 3.2rem;
+        }
+        #marquee-ch2 {
+            background: linear-gradient(
+                to bottom,
+                #343432 0%,
+                #1a1a18 10%,
+                #0e0e0c 25%,
+                #080808 35%,
+                #080808 65%,
+                #0e0e0c 75%,
+                #1a1a18 90%,
+                #343432 100%
+            );
+            border-top: 1px solid #333330;
+            border-bottom: 1px solid #333330;
+            box-shadow: inset 0 8px 24px rgba(0,0,0,0.6), inset 0 -8px 24px rgba(0,0,0,0.6);
+            padding: 0.35rem 0;
+        }
+        #marquee-ch2 .marquee-track span {
+            color: #f0f0ee;
+            font-size: 2.5rem;
+        }
+        @keyframes spinSep {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .marquee-sep {
+            display: inline-block;
+            animation: spinSep 5s linear infinite;
+        }
+
+        @keyframes marqueeRoll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* ======= CHAPTER SECTIONS ======= */
+        .chapter {
+            min-height: 100vh;
+            padding: 8rem 8vw;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chapter.light { background: var(--off-white); color: var(--black); }
+        .chapter.dark  { background: var(--black);     color: var(--off-white); }
+
+        .chapter-label {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 6rem;
+        }
+
+        .ch-num {
+            font-family: var(--font-display);
+            font-size: 7rem;
+            line-height: 1;
+            opacity: 0.1;
+            letter-spacing: -0.03em;
+        }
+
+        .ch-info {
+            padding-left: 2rem;
+            border-left: 1px solid currentColor;
+            opacity: 0.4;
+        }
+
+        .ch-era {
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+        }
+
+        .ch-company {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .ch-title {
+            font-size: 0.9rem;
+            font-weight: 400;
+            margin-top: 0.2rem;
+        }
+
+        .ch-context {
+            font-family: var(--font-serif);
+            font-size: 0.85rem;
+            margin-top: 0.35rem;
+            opacity: 0.75;
+        }
+
+        .ch-context-line {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: rgba(240,240,238,0.88);
+            margin: 1.2rem 0 2.5rem;
+            max-width: 52ch;
+        }
+
+
+        .deco-quote {
+            position: absolute;
+            top: -4rem;
+            left: -3.5rem;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: clamp(16.1rem, 27.6vw, 34.5rem);
+            line-height: 0.85;
+            color: #2e2e2c;
+            opacity: 0;
+            pointer-events: none;
+            user-select: none;
+            z-index: 0;
+        }
+
+        .ch-small-headline {
+            font-family: var(--font-display);
+            font-size: clamp(0.85rem, 1.4vw, 1.1rem);
+            letter-spacing: 0.2em;
+            opacity: 0.45;
+            margin-bottom: 3rem;
+        }
+
+        .q-serif-pull {
+            font-family: var(--font-serif);
+
+            font-weight: 700;
+            font-size: clamp(1.5rem, 3vw, 2.8rem);
+            line-height: 1.15;
+            letter-spacing: 0.03em;
+        }
+
+        .q-serif-hero {
+            font-family: var(--font-serif);
+
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            line-height: 1.35;
+            font-weight: 400;
+        }
+
+        /* ======= BIG BACKGROUND TEXT ======= */
+        .bg-word {
+            position: absolute;
+            font-family: var(--font-display);
+            font-size: clamp(10rem, 30vw, 38rem);
+            line-height: 1;
+            opacity: 0.12;
+            pointer-events: none;
+            white-space: nowrap;
+            z-index: 0;
+            letter-spacing: -0.02em;
+        }
+
+        .chapter > * { position: relative; z-index: 1; }
+
+        /* ======= GRID LAYOUTS ======= */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .grid-2.flip { direction: rtl; }
+        .grid-2.flip > * { direction: ltr; }
+
+        @media (max-width: 900px) {
+            .grid-2 { grid-template-columns: 1fr; gap: 3rem; }
+            .grid-2.flip { direction: ltr; }
+        }
+
+        /* ======= QUOTE STYLES ======= */
+        .q-giant {
+            font-family: var(--font-display);
+            font-size: clamp(4rem, 12vw, 14rem);
+            line-height: 0.9;
+            letter-spacing: -0.01em;
+        }
+
+        .q-giant .clip { overflow: hidden; display: block; }
+        .q-giant .clip span { display: block; }
+
+        .q-large {
+            font-family: var(--font-serif);
+
+            font-size: clamp(1.6rem, 3.5vw, 3rem);
+            line-height: 1.3;
+            letter-spacing: 0.03em;
+        }
+
+        .q-large .clip { overflow: hidden; display: block; }
+        .q-large .clip span { display: block; }
+
+        .q-body {
+            font-family: var(--font-serif);
+
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            line-height: 1.6;
+            max-width: 40ch;
+            letter-spacing: 0.03em;
+        }
+
+        .attr {
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            opacity: 0.5;
+            line-height: 1.8;
+        }
+
+        .attr strong {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0;
+            text-transform: none;
+            opacity: 1;
+            margin-bottom: 0.2rem;
+        }
+
+        /* ======= SCREENSHOT CARDS ======= */
+        .ss-card {
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.5), 0 12px 30px rgba(0,0,0,0.3);
+            max-width: 480px;
+            width: 100%;
+        }
+
+        .ss-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Placeholder when image fails to load */
+        .ss-placeholder {
+            background: #1c1c1e;
+            border-radius: 14px;
+            padding: 3rem 2rem;
+            max-width: 420px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+            border: 1px dashed rgba(255,255,255,0.1);
+        }
+
+        .ss-placeholder.on-light {
+            background: #e8e5df;
+            border: 1px dashed rgba(0,0,0,0.15);
+        }
+
+        .ss-placeholder .pl-tag {
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--warm-gray);
+            margin-bottom: 1rem;
+        }
+
+        .ss-placeholder .pl-desc {
+            font-family: var(--font-serif);
+
+            font-size: 1.1rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .ss-placeholder .pl-file {
+            font-family: monospace;
+            font-size: 0.65rem;
+            background: rgba(255,255,255,0.06);
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
+            word-break: break-all;
+            color: var(--warm-gray);
+            display: block;
+        }
+
+        .ss-placeholder.on-light .pl-file {
+            background: rgba(0,0,0,0.06);
+            color: #666;
+        }
+
+        /* ======= IMESSAGE CARD ======= */
+        .imsg {
+            background: #f2f2f7;
+            border-radius: 22px;
+            padding: 1.25rem;
+            max-width: 300px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.45), 0 10px 30px rgba(0,0,0,0.25);
+        }
+
+        .imsg-header {
+            text-align: center;
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            color: #8e8e93;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .imsg-sender {
+            font-size: 0.7rem;
+            color: #8e8e93;
+            margin-bottom: 0.3rem;
+            padding-left: 0.4rem;
+        }
+
+        .bubbles { display: flex; flex-direction: column; gap: 0.4rem; }
+
+        .bubble {
+            padding: 0.7rem 1rem;
+            border-radius: 18px;
+            font-family: var(--font-sans);
+            font-size: 0.77rem;
+            line-height: 1.45;
+            max-width: 82%;
+        }
+
+        .bubble.recv {
+            background: #e5e5ea;
+            color: #000;
+            border-bottom-left-radius: 5px;
+            align-self: flex-start;
+        }
+
+        .bubble.sent {
+            background: #007aff;
+            color: #fff;
+            border-bottom-right-radius: 5px;
+            align-self: flex-end;
+        }
+
+        /* ======= CHAPTER 1 CALLOUT (board email) ======= */
+        .board-note {
+            margin-top: 3rem;
+            padding: 1.5rem 2rem;
+            border: 1px solid rgba(0,0,0,0.12);
+            border-radius: 10px;
+            display: inline-block;
+            max-width: 44ch;
+        }
+
+        .board-note .bn-label {
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 0.5rem;
+        }
+
+        .board-note .bn-text {
+            font-family: var(--font-serif);
+
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* ======= SHOPIFY DIVIDER ======= */
+        .divider {
+            height: 1px;
+            background: currentColor;
+            opacity: 0.1;
+            margin: 6rem 0;
+        }
+
+        /* ======= STITCH CHAPTER SPECIFIC ======= */
+        .stitch-quote-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .stitch-mini-divider {
+            width: 40px;
+            height: 1px;
+            background: currentColor;
+            opacity: 0.3;
+            margin: 2rem 0;
+        }
+
+        /* ======= EARLY CAREER ======= */
+        .early-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        .early-split .label {
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            opacity: 0.35;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .early-split { grid-template-columns: 1fr; gap: 4rem; }
+            .chapter { padding: 5rem 6vw; }
+        }
+
+        /* ======= CLOSING ======= */
+        .closing {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem;
+            background: var(--black);
+        }
+
+        .closing-headline {
+            font-family: var(--font-display);
+            font-size: clamp(4rem, 12vw, 14rem);
+            line-height: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .closing-headline .clip { overflow: hidden; display: block; }
+        .closing-headline .clip span { display: block; }
+
+        .closing-sub {
+            font-family: var(--font-serif);
+
+            font-size: 1.2rem;
+            color: var(--warm-gray);
+            letter-spacing: 0.02em;
+        }
+
+        /* ======= OVERLAPPING DOCUMENTS ======= */
+        .stacked-docs {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .doc-page {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 18px 48px rgba(0,0,0,0.18), 0 4px 14px rgba(0,0,0,0.1);
+        }
+
+        .doc-page img { width: 100%; display: block; }
+
+        /* doc-front overlaps doc-behind — offset left, sits lower to expose para 3 first line */
+        #doc-front {
+            margin-top: -15%;
+            position: relative;
+            left: -13%;
+            width: 100%;
+            z-index: 2;
+            box-shadow: 0 -6px 20px rgba(0,0,0,0.08), 0 18px 48px rgba(0,0,0,0.18), 0 4px 14px rgba(0,0,0,0.1);
+        }
+
+        /* ======= BOARD STATEMENT STYLES ======= */
+        .board-quote {
+            font-family: var(--font-serif);
+            font-size: clamp(1.15rem, 2.2vw, 1.6rem);
+            line-height: 1.65;
+            letter-spacing: 0.03em;
+            margin: 2.5rem 0 2rem;
+            color: rgba(240,240,238,0.92);
+            max-width: 42ch;
+        }
+
+        .supporting-note {
+            margin-top: 2.5rem;
+            padding: 1.25rem 1.5rem;
+            background: rgba(0,0,0,0.04);
+            border-radius: 8px;
+            max-width: 40ch;
+        }
+
+        .sn-label {
+            font-size: 0.6rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: #aaa;
+            margin-bottom: 0.6rem;
+        }
+
+        .sn-text {
+            font-family: var(--font-serif);
+
+            font-size: 1rem;
+            line-height: 1.55;
+            color: #444;
+        }
+
+        .supporting-doc {
+            margin-top: 2.5rem;
+            max-width: 300px;
+            margin-left: auto;
+        }
+
+        /* ======= GSAP INITIAL STATES (set via JS) ======= */
+        .will-reveal { opacity: 0; }
+
+        /* ---- BD Monogram ---- */
+        #bd-monogram, #bd-fullname {
+            position: fixed;
+            bottom: 1rem;
+            right: 2rem;
+            font-family: 'Comforter Brush', cursive;
+            font-size: clamp(2.75rem, 4.6vw, 5.05rem);
+            line-height: 1;
+            letter-spacing: -0.04em;
+            color: #ffffff;
+            -webkit-text-stroke: none;
+            opacity: 1;
+            pointer-events: none;
+            z-index: 9999;
+            user-select: none;
+            mix-blend-mode: difference;
+        }
+        #bd-fullname { clip-path: circle(150% at 100% 100%); }
+        #bd-monogram { clip-path: circle(0% at 100% 100%); }
+
+    </style>
+</head>
+<body>
+
+<!-- =========================================================
+     HERO
+     ========================================================= -->
+<section class="hero">
+    <div class="hero-overlay"></div>
+    <p class="hero-eyebrow">A look at the momentum we can build together</p>
+    <h1 class="hero-headline">
+        <span class="clip"><span>DON'T TAKE</span></span>
+        <span class="clip"><span>MY WORD</span></span>
+        <span class="clip"><span>FOR IT.</span></span>
+    </h1>
+    <p class="hero-sub" id="hero-sub">
+        The partners, leaders, and teams who built, sold, and scaled with me. Here's what they said.
+    </p>
+</section>
+
+
+<!-- =========================================================
+     CHAPTER 01 — FRACTIONAL CMO / NOW
+     ========================================================= -->
+<div class="marquee on-dark">
+    <div class="marquee-track" style="animation-duration: 40s;">
+        <span>WHAT COULD I DO FOR YOU IN 45 DAYS?</span><span class="marquee-sep">✦</span><span>WHAT COULD I DO FOR YOU IN 45 DAYS?</span><span class="marquee-sep">✦</span><span>WHAT COULD I DO FOR YOU IN 45 DAYS?</span><span class="marquee-sep">✦</span><span>WHAT COULD I DO FOR YOU IN 45 DAYS?</span><span class="marquee-sep">✦</span>
+        <span>WHAT COULD I DO FOR YOU IN 45 DAYS?</span><span class="marquee-sep">✦</span><span>WHAT COULD I DO FOR YOU IN 45 DAYS?</span><span class="marquee-sep">✦</span><span>WHAT COULD I DO FOR YOU IN 45 DAYS?</span><span class="marquee-sep">✦</span><span>WHAT COULD I DO FOR YOU IN 45 DAYS?</span><span class="marquee-sep">✦</span>
+    </div>
+</div>
+
+<section class="chapter dark" id="ch1" style="padding-top: 0.5rem;">
+    <span class="bg-word" style="bottom: -8%; right: -5%; color: #161614; opacity: 1; font-size: clamp(9rem, 27vw, 34.2rem);">NOW</span>
+
+    <div class="chapter-label will-reveal" style="justify-content: flex-end; text-align: right;">
+        <div class="ch-num" style="opacity: 0.15;">01</div>
+        <div class="ch-info" style="opacity: 1;">
+            <div class="ch-company" style="color: rgba(240,240,238,0.55);">Jonathan Connolly</div>
+            <div class="ch-title" style="color: rgba(240,240,238,0.45);">President & COO, Wealth Advisors Trust Company</div>
+            <div class="ch-context" style="font-family: var(--font-sans); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.7; color: rgba(240,240,238,0.88);">where Barbs serves as the Fractional CMO</div>
+        </div>
+    </div>
+
+    <!-- Full-width headline: first two lines above the grid -->
+    <div class="q-giant" style="font-size: clamp(3.2rem, 9.6vw, 11.2rem); margin-bottom: 0;">
+        <span class="clip"><span>IN 45 DAYS, SHE GAVE THE</span></span>
+        <span class="clip"><span>PRESIDENT SOMETHING</span></span>
+    </div>
+
+    <div class="grid-2">
+
+        <!-- LEFT: Headline conclusion + blockquote -->
+        <div>
+            <div class="q-giant" style="font-size: clamp(3.2rem, 9.6vw, 11.2rem);">
+                <span class="clip"><span>TO BRING TO</span></span>
+                <span class="clip"><span>THE BOARD.</span></span>
+            </div>
+
+            <blockquote class="board-quote" id="board-quote">
+                "What Phase 1 ultimately produced is something we've never had before: a single, unified picture of our internal reality, our digital footprint, and the forces shaping our industry."
+            </blockquote>
+        </div>
+
+        <!-- RIGHT: Board email documents, stacked — untouched -->
+        <div>
+            <div class="stacked-docs" id="layered-docs">
+                <div class="doc-page" id="doc-behind">
+                    <img
+                        src="./MY PROFESSIONAL REFERRALS %26 REFERENCES/Jon to Board - 1 of 2.jpg"
+                        alt="Jon's email to WATC Board, 1 of 2"
+                    >
+                </div>
+                <div class="doc-page" id="doc-front">
+                    <img
+                        src="./MY PROFESSIONAL REFERRALS %26 REFERENCES/Jon to Board 2 of 2.jpg"
+                        alt="Jon's email to WATC Board, 2 of 2"
+                    >
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =========================================================
+     CHAPTER 02 — COMMERCETOOLS
+     ========================================================= -->
+<div class="marquee reverse" id="marquee-ch2" style="margin-bottom: 2rem;">
+    <div class="marquee-track" style="animation-duration: 55s;">
+        <span>MOST LIKELY TO GO ALL IN</span><span class="marquee-sep">✦</span><span>MOST LIKELY TO GO ALL IN</span><span class="marquee-sep">✦</span><span>MOST LIKELY TO GO ALL IN</span><span class="marquee-sep">✦</span><span>MOST LIKELY TO GO ALL IN</span><span class="marquee-sep">✦</span>
+        <span>MOST LIKELY TO GO ALL IN</span><span class="marquee-sep">✦</span><span>MOST LIKELY TO GO ALL IN</span><span class="marquee-sep">✦</span><span>MOST LIKELY TO GO ALL IN</span><span class="marquee-sep">✦</span><span>MOST LIKELY TO GO ALL IN</span><span class="marquee-sep">✦</span>
+    </div>
+</div>
+
+<section class="chapter dark" id="ch2">
+
+    <div class="chapter-label will-reveal">
+        <div class="ch-num">02</div>
+        <div class="ch-info" style="opacity: 1;">
+            <div class="ch-company" style="color: rgba(240,240,238,0.4);">Craig Gottlieb</div>
+            <div class="ch-title" style="color: rgba(240,240,238,0.4);">Senior Client Relations Executive, Valtech (Global Digital Agency)</div>
+            <div id="ch2-context" style="font-family: var(--font-sans); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(240,240,238,0.88); margin-top: 0.75rem; line-height: 1.7;">Three years partnering together on deals in the ecom ecosystem.<br>Barbs on the tech side. Craig on the agency implementation side.</div>
+        </div>
+    </div>
+
+    <div class="q-giant" style="font-size: clamp(3.5rem, 8vw, 9rem); line-height: 0.9; margin-top: 7rem; margin-bottom: 9rem;">
+        <span style="display: block;">THE BEST PARTNERS</span>
+        <span style="display: block;">ARE CHOSEN FOR A REASON</span>
+    </div>
+
+    <div style="position: relative; padding-top: 1rem;">
+        <span class="deco-quote">&ldquo;</span>
+        <div class="ss-card" id="craig-card" style="float: right; max-width: 540px; margin-left: 4rem; margin-top: -5rem; margin-bottom: 2rem;">
+            <img src="./MY PROFESSIONAL REFERRALS %26 REFERENCES/Craig Gottlieb - testimonial.png" alt="Craig Gottlieb LinkedIn recommendation">
+        </div>
+        <p class="q-body will-reveal" id="craig-pull" style="margin-top: 1rem; margin-bottom: 0.4rem; position: relative; z-index: 1; max-width: none;">
+            She has a keen understanding of the business challenge and what it takes to drive business outcomes. She did an amazing job listening to the prospect, consulting with me on win themes and partnering throughout our joint pursuits. <strong>She takes great pride in her work and goes all in.</strong> And most importantly, she&rsquo;s a blast to work with!&rdquo;
+        </p>
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     MARQUEE — Craig → Matt (internal / technical vote)
+     ========================================================= -->
+<div class="marquee on-light" id="marquee-ch3" style="margin-top: 5rem;">
+    <div class="marquee-track">
+        <span>THE TECHNICAL VOTE</span><span class="marquee-sep">✦</span><span>THE TECHNICAL VOTE</span><span class="marquee-sep">✦</span><span>THE TECHNICAL VOTE</span><span class="marquee-sep">✦</span><span>THE TECHNICAL VOTE</span><span class="marquee-sep">✦</span>
+        <span>THE TECHNICAL VOTE</span><span class="marquee-sep">✦</span><span>THE TECHNICAL VOTE</span><span class="marquee-sep">✦</span><span>THE TECHNICAL VOTE</span><span class="marquee-sep">✦</span><span>THE TECHNICAL VOTE</span><span class="marquee-sep">✦</span>
+    </div>
+</div>
+
+
+<!-- =========================================================
+     CHAPTER 03 — MATT DUNPHY / COMMERCETOOLS
+     ========================================================= -->
+<section class="chapter light" id="ch3">
+
+    <div id="ch3-headline" style="font-family: var(--font-display); font-size: clamp(3rem, 6.5vw, 8rem); line-height: 0.95; letter-spacing: -0.01em; margin-top: 3rem; margin-bottom: 6rem; text-align: center;">SHE DIDN'T JUST WIN THE ROOM.<br>SHE WON THE BACK OF THE ROOM.</div>
+
+    <div class="chapter-label will-reveal" style="justify-content: center; margin-bottom: 0;">
+        <div class="ch-num" style="font-size: 4.1rem;">03</div>
+        <div class="ch-info">
+            <div class="ch-company">Matt Dunphy</div>
+            <div class="ch-title">Lead Solutions Engineer, commercetools</div>
+        </div>
+    </div>
+
+    <div class="ch-context will-reveal" style="font-family: var(--font-sans); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.7; text-align: center; margin-top: 1.5rem; margin-bottom: 2.5rem; color: rgba(8,8,8,0.4);">He's technical. She's commercial. Same team. Opposite expertise. Deal after deal.</div>
+
+    <div style="margin: 0 auto; max-width: 990px; margin-top: 2rem;">
+        <div class="ss-card will-reveal" data-rotation="0" style="max-width: 100%; width: 100%;">
+            <img src="./MY PROFESSIONAL REFERRALS %26 REFERENCES/Matt Dunphy - testimonial.png" alt="Matt Dunphy LinkedIn recommendation">
+        </div>
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CHAPTER 04 — SHOPIFY
+     ========================================================= -->
+<div class="marquee on-dark">
+    <div class="marquee-track">
+        <span>NO ESCALATIONS. JUST ELEVATION.</span><span class="marquee-sep">✦</span><span>NO ESCALATIONS. JUST ELEVATION.</span><span class="marquee-sep">✦</span><span>NO ESCALATIONS. JUST ELEVATION.</span><span class="marquee-sep">✦</span><span>NO ESCALATIONS. JUST ELEVATION.</span><span class="marquee-sep">✦</span>
+        <span>NO ESCALATIONS. JUST ELEVATION.</span><span class="marquee-sep">✦</span><span>NO ESCALATIONS. JUST ELEVATION.</span><span class="marquee-sep">✦</span><span>NO ESCALATIONS. JUST ELEVATION.</span><span class="marquee-sep">✦</span><span>NO ESCALATIONS. JUST ELEVATION.</span><span class="marquee-sep">✦</span>
+    </div>
+</div>
+
+<section class="chapter dark" id="ch4-shopify" style="padding-top: 5rem;">
+    <span class="bg-word" style="bottom: -5%; left: -8%; font-size: clamp(6.6rem, 19.8vw, 25rem); color: #1a1a18; opacity: 1;">RELATIONSHIPS</span>
+
+    <div class="chapter-label will-reveal" style="margin-top: 3rem; margin-bottom: 3.5rem;">
+        <div class="ch-num">04</div>
+        <div class="ch-info">
+            <p class="ch-context" style="font-family: var(--font-sans); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.7;">At Shopify, the loudest endorsements don't come from your manager. They come from your peers. Sari and Imran posted this to nearly 500 internal teammates.</p>
+        </div>
+    </div>
+
+    <div class="grid-2" style="align-items: start;">
+        <div>
+            <div class="q-giant will-reveal" style="font-size: clamp(5rem, 13vw, 15rem); line-height: 0.88; margin-top: 0; margin-bottom: 1.5rem;">Got Trust?</div>
+            <img src="./GotTrust%3F.jpg" alt="Got Trust?" class="will-reveal" style="max-width: 74%; display: block;">
+        </div>
+
+        <div style="display: flex; flex-direction: column; align-items: flex-start;">
+            <div class="ss-card will-reveal" data-rotation="0" style="max-width: 200px; margin-left: auto; margin-right: 14rem;">
+                <img
+                    src="./MY PROFESSIONAL REFERRALS %26 REFERENCES/SHOPIFY%20-%201.jpg"
+                    alt="Shopify internal Slack recognition"
+                >
+            </div>
+            <div style="margin-top: 8rem; margin-left: -4rem;">
+                <p class="q-body will-reveal">
+                    "Huge shout out to @Barbarella for helping Launch reset the conversation... Barb used her relationship to help realign the project at launch, after the merchant team started going beyond the original scope."
+                </p>
+                <div class="attr will-reveal" style="margin-top: 0.75rem;">
+                    <strong>Sari Eldadah</strong> · Sr. Lead of Technology Services, Shopify
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 7rem;">
+        <p class="q-body" id="imran-quote" style="max-width: none;">
+            "She drove full steam ahead, arranged and led the realignment meeting…Without Barbara stepping in and proactively supporting the launch, this could have been a launch filled with merchant escalations and negative experiences..."
+        </p>
+        <div class="attr" id="imran-attr" style="margin-top: 0.75rem;">
+            <strong>Imran Patel</strong> · Senior Plus Launch Engineer, Shopify
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     CHAPTER 04 — EDITED
+     ========================================================= -->
+<div class="marquee on-dark reverse" id="marquee-sizzle">
+    <div class="marquee-track" style="animation-duration: 50s;">
+        <span>NO SIZZLE. JUST PIPE.</span><span class="marquee-sep">✦</span><span>NO SIZZLE. JUST PIPE.</span><span class="marquee-sep">✦</span><span>NO SIZZLE. JUST PIPE.</span><span class="marquee-sep">✦</span><span>NO SIZZLE. JUST PIPE.</span><span class="marquee-sep">✦</span>
+        <span>NO SIZZLE. JUST PIPE.</span><span class="marquee-sep">✦</span><span>NO SIZZLE. JUST PIPE.</span><span class="marquee-sep">✦</span><span>NO SIZZLE. JUST PIPE.</span><span class="marquee-sep">✦</span><span>NO SIZZLE. JUST PIPE.</span><span class="marquee-sep">✦</span>
+    </div>
+</div>
+
+<!-- CHAPTER 05 — JOE ALEARDI (EDITED) -->
+<section class="chapter dark" id="ch5-joe">
+
+    <div class="chapter-label will-reveal" style="justify-content: flex-end; text-align: right;">
+        <div class="ch-info" style="border-left: none; padding-left: 0; opacity: 1;">
+            <p class="ch-context" style="font-family: var(--font-sans); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.7; color: #ffffff;">A CRO doesn't text a former salesperson months after she leaves. But Joe Aleardi did.</p>
+            <div class="ch-company" style="margin-top: 1.2rem; color: rgba(240,240,238,0.4);">Joe Aleardi</div>
+            <div class="ch-title" style="color: rgba(240,240,238,0.4);">CRO @Limble · Previously CRO @EDITED when Barbs was an Enterprise Account Executive</div>
+        </div>
+        <div class="ch-num" style="font-size: 5.25rem; border-left: 1px solid currentColor; padding-left: 2rem;">05</div>
+    </div>
+
+    <div class="q-giant will-reveal" style="font-size: clamp(4rem, 11vw, 13rem); margin-bottom: 4rem;">
+        <span class="clip"><span>HER WORK</span></span>
+        <span class="clip"><span>DOESN'T CLOCK OUT</span></span>
+        <span class="clip"><span>WHEN SHE DOES.</span></span>
+    </div>
+
+    <div class="grid-2 flip">
+        <div style="margin-left: -6rem;">
+            <p class="q-body will-reveal" style="margin-bottom: 2rem;">
+                "You should've stayed. Your deals came in!! Thanks for all your hard work over the year, it certainly paid off for us. I owe you."
+            </p>
+        </div>
+        <div>
+            <div class="imsg will-reveal" id="imsg">
+                <div class="imsg-header">iMessage &nbsp;·&nbsp; Tue, Jan 11 &nbsp;·&nbsp; 4:43 PM</div>
+                <div class="imsg-sender">Joe Aleardi</div>
+                <div class="bubbles">
+                    <div class="bubble recv" id="b1">Hey there, happy new year! Hope all is well, just wanted to let you know you should've stayed. Your deals came in!! Thanks for all your hard work over the year, it certainly paid off for us.  I owe you.  You going to NRF?</div>
+                    <div class="bubble sent" id="b2">Happy new year, Joe!! That's great to hear...I'm so glad I was able to contribute even though I was there for just a short time!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- CHAPTER 06 — GEOFF WATTS (EDITED) -->
+<section class="chapter light" id="ch6-geoff" style="background: linear-gradient(to bottom, #080808 0%, #2a2a28 6%, #6b6b68 14%, #b5b3ae 24%, #cac8c2 29%, #dad8d3 34%, #e6e4df 40%, var(--off-white) 48%); padding-top: 18rem; padding-bottom: 12rem;">
+
+
+    <div class="chapter-label will-reveal">
+        <div class="ch-num">06</div>
+        <div class="ch-info">
+            <div class="ch-company">Geoff Watts</div>
+            <p class="ch-context" style="font-family: var(--font-sans); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.7;">Co-Founder and former CEO of EDITED, Retail Intelligence Platform.</p>
+        </div>
+    </div>
+
+    <div class="q-giant" style="font-size: clamp(3.5rem, 8.4vw, 10.5rem); margin-top: 7rem; margin-bottom: 7rem; text-align: right;">
+        <span class="clip"><span>MOST RESIGNATIONS GET HR.</span></span>
+        <span class="clip"><span>HERS GOT THE CEO.</span></span>
+    </div>
+
+    <div class="grid-2">
+        <div>
+            <p class="q-body" id="geoff-quote">
+                "I heard some of the things you did to open doors for us with customers and innovate on sales techniques. I really appreciate that, it added value just as the business you closed did."
+            </p>
+        </div>
+        <div class="ss-card will-reveal" data-rotation="0">
+            <img
+                src="./MY PROFESSIONAL REFERRALS %26 REFERENCES/EDITED - Geoff.jpg"
+                alt="Geoff Watts email"
+            >
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     CHAPTER 07 — GADI BASHVITZ / STITCH LABS
+     ========================================================= -->
+<div class="marquee on-dark" style="animation-duration: 40s;">
+    <div class="marquee-track" style="animation-duration: 40s;">
+        <span>SOME PEOPLE RAMP UP. OTHERS HIT THE GROUND RUNNING.</span><span class="marquee-sep">✦</span><span>SOME PEOPLE RAMP UP. OTHERS HIT THE GROUND RUNNING.</span><span class="marquee-sep">✦</span><span>SOME PEOPLE RAMP UP. OTHERS HIT THE GROUND RUNNING.</span><span class="marquee-sep">✦</span><span>SOME PEOPLE RAMP UP. OTHERS HIT THE GROUND RUNNING.</span><span class="marquee-sep">✦</span>
+        <span>SOME PEOPLE RAMP UP. OTHERS HIT THE GROUND RUNNING.</span><span class="marquee-sep">✦</span><span>SOME PEOPLE RAMP UP. OTHERS HIT THE GROUND RUNNING.</span><span class="marquee-sep">✦</span><span>SOME PEOPLE RAMP UP. OTHERS HIT THE GROUND RUNNING.</span><span class="marquee-sep">✦</span><span>SOME PEOPLE RAMP UP. OTHERS HIT THE GROUND RUNNING.</span><span class="marquee-sep">✦</span>
+    </div>
+</div>
+
+<section class="chapter dark" id="ch7-gadi">
+
+    <div style="position: relative; margin-top: 4rem;">
+        <span class="deco-quote" id="ch7-deco-quote">&ldquo;</span>
+        <div class="q-giant" style="font-size: clamp(3.3rem, 7.7vw, 9.9rem); padding-top: 2.5rem; margin-bottom: 4rem;">
+            <span class="clip"><span>BARBARA WAS A</span></span>
+            <span class="clip"><span>STAR FROM THE ONSET.</span></span>
+        </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1.6fr 1fr; gap: 5rem; align-items: start;">
+        <div style="padding-top: 4rem;">
+            <div class="ss-card will-reveal" data-rotation="0" style="max-width: 662px;">
+                <img
+                    src="./MY PROFESSIONAL REFERRALS %26 REFERENCES/Gadi%20Bashvitz%20%28CEO%20%40BrightStar%20Security%29-%20testimonial.png"
+                    alt="Gadi Bashvitz LinkedIn recommendation"
+                >
+            </div>
+            <div class="will-reveal" style="display: flex; align-items: center; gap: 1.5rem; margin-top: 5rem;">
+                <div class="ch-num" style="font-size: 5rem; border-right: 1px solid currentColor; padding-right: 1.5rem; opacity: 0.4; line-height: 1; flex-shrink: 0;">07</div>
+                <div class="attr" style="margin-top: 0; display: flex; flex-direction: column; justify-content: center;">
+                    <strong>Gadi Bashvitz</strong>
+                    <span style="font-family: var(--font-sans); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.7;">Former CRO @Stitch Labs. Now CEO @Bright Security</span>
+                </div>
+            </div>
+        </div>
+        <div>
+            <p class="q-body" id="gadi-quote" style="margin-bottom: 0;">
+                "She was able to quickly understand our offering and distill the key messages to customers to help them understand our value.
+            </p>
+            <div class="stitch-mini-divider" style="margin: 2rem 0;"></div>
+            <p class="q-body" id="gadi-quote-2" style="margin-bottom: 3rem;">
+                She is meticulous and understands how to effectively drive an enterprise process and bring it to a successful conclusion."
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     CHAPTER 08 — STITCH LABS / BRANDON LEVEY
+     ========================================================= -->
+<section class="chapter light" id="ch8-stitch" style="padding-bottom: 10rem;">
+    <span class="bg-word" id="ch8-bg-word" style="top: 0; left: -8%; opacity: 0.06;">VOUCHED</span>
+
+    <div style="position: relative; z-index: 1;">
+        <div class="chapter-label will-reveal" style="justify-content: flex-end; text-align: right;">
+            <div class="ch-info" style="padding-left: 0; border-left: none; opacity: 1;">
+                <p class="ch-context" style="font-family: var(--font-sans); font-size: 0.94rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.7; color: #3a3a38;">His company was being absorbed. His product was being shut down.<br>He still used his name to open a door for Barbara.</p>
+            </div>
+            <div class="ch-num" style="border-left: 1px solid currentColor; padding-left: 2rem;">08</div>
+        </div>
+
+        <div class="q-giant will-reveal" style="font-size: clamp(3rem, 7vw, 9rem); margin-bottom: 4rem;">
+            <span class="clip"><span>YOU DO THAT FOR</span></span>
+            <span class="clip"><span>SOMEONE YOU</span></span>
+            <span class="clip"><span>BELIEVE IN.</span></span>
+        </div>
+
+        <div class="grid-2">
+            <div>
+                <p class="q-body" id="brandon-quote" style="max-width: 75%; margin-top: 6rem;">
+                    "She has an incredible work ethic, open to learning, is extremely personable, and we were sad to have parted ways."
+                </p>
+            </div>
+
+            <div style="margin-left: -4rem;">
+                <div class="ss-card will-reveal" data-rotation="0" style="margin-top: -9rem; margin-bottom: 2rem;">
+                    <img
+                        src="./MY PROFESSIONAL REFERRALS %26 REFERENCES/STITCHLABS%20-%201.jpg"
+                        alt="Brandon Levey email introducing Barbs to another CEO"
+                    >
+                </div>
+                <div class="attr" id="brandon-attr" style="margin-top: 7rem; max-width: 480px; width: 100%; text-align: right; font-family: var(--font-sans); font-size: 0.9rem; font-weight: 400; letter-spacing: normal; text-transform: none; line-height: 1.6; opacity: 1; color: rgba(8,8,8,0.55);">
+                    <strong>Brandon Levey</strong> Former Co-Founder & CEO @Stitch Labs<br>Current Founder & CEO @Ichi
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     CHAPTER 09 — EARLY CAREER
+     ========================================================= -->
+<div class="marquee on-dark reverse">
+    <div class="marquee-track" style="animation-duration: 60s;">
+        <span>FOUNDER DNA, ENTERPRISE SCALE.</span><span class="marquee-sep">✦</span><span>FOUNDER DNA, ENTERPRISE SCALE.</span><span class="marquee-sep">✦</span><span>FOUNDER DNA, ENTERPRISE SCALE.</span><span class="marquee-sep">✦</span><span>FOUNDER DNA, ENTERPRISE SCALE.</span><span class="marquee-sep">✦</span>
+        <span>FOUNDER DNA, ENTERPRISE SCALE.</span><span class="marquee-sep">✦</span><span>FOUNDER DNA, ENTERPRISE SCALE.</span><span class="marquee-sep">✦</span><span>FOUNDER DNA, ENTERPRISE SCALE.</span><span class="marquee-sep">✦</span><span>FOUNDER DNA, ENTERPRISE SCALE.</span><span class="marquee-sep">✦</span>
+    </div>
+</div>
+
+<!-- CHAPTER 09 — BRITTANY HARRIS -->
+<section class="chapter dark" id="ch9-brittany" style="overflow: visible; padding-bottom: 100vh;">
+
+    <div id="ch9-circle" style="display: flex; justify-content: flex-end; margin-right: 4rem; margin-bottom: 0; margin-top: -2rem; z-index: 0; position: relative; will-change: transform;">
+        <div style="width: clamp(280px, 38vw, 520px); height: clamp(280px, 38vw, 520px); border-radius: 50%; overflow: hidden; flex-shrink: 0; opacity: 1;">
+            <img src="./diana-parkhouse-H8sqvuLE2CQ-unsplash.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+        </div>
+    </div>
+
+    <div style="position: relative; z-index: 1;">
+        <div class="chapter-label will-reveal">
+            <div class="ch-num" style="opacity: 0.2;">09</div>
+            <div class="ch-info">
+                <div class="ch-company">Brittany Harris</div>
+                <div class="ch-title">Enterprise Technology Executive</div>
+                <div class="ch-context" style="font-family: var(--font-sans); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.7; opacity: 0.75;">They met as founders. From trunk shows to global fashion tech.</div>
+            </div>
+        </div>
+
+        <div class="q-giant will-reveal" style="font-size: clamp(2.75rem, 6.6vw, 8.25rem); margin-bottom: 4rem;">
+            <span class="clip"><span>THE ENTREPRENEURIAL HAT</span></span>
+            <span class="clip"><span>NEVER COMES OFF.</span></span>
+        </div>
+
+        <div style="max-width: 524px;">
+            <p class="q-body will-reveal">
+                "Barbara is not only extremely resourceful when it comes to thinking outside the box or using her entrepreneurial hat when it came to problem solving but she is very proactive and extremely detail oriented."
+            </p>
+            <div class="ss-card will-reveal" data-rotation="0" style="margin-top: 5rem; max-width: 524px;">
+                <img
+                    src="./MY PROFESSIONAL REFERRALS %26 REFERENCES/Brittany%20Harris%20-%20testimonial.png"
+                    alt="Brittany Harris LinkedIn recommendation"
+                >
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- CHAPTER 10 — LINDA TRAYLINIC -->
+<section class="chapter light" id="ch10-linda">
+
+    <div id="ch10-headline" style="font-family: var(--font-display); font-size: clamp(4rem, 10vw, 12rem); line-height: 0.92; letter-spacing: -0.02em; margin-bottom: 5rem;">SHE CARES ABOUT<br>THE CUSTOMER'S CUSTOMER.</div>
+
+    <div class="chapter-label will-reveal">
+        <div class="ch-num">10</div>
+        <div class="ch-info">
+            <div class="ch-company">Linda Traylinic</div>
+            <div class="ch-context" style="font-family: var(--font-sans); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.7; opacity: 0.75;">Linda was the buyer. Barbara was the seller.</div>
+        </div>
+    </div>
+
+    <div style="margin-left: 45%;">
+        <div class="q-large" style="font-size: clamp(1.1rem, 2.2vw, 2rem); max-width: 35rem;">
+            <span class="clip"><span>"I was impressed with... her passion for the needs of my customer."</span></span>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: center; margin-top: 6rem; padding-right: 14%;">
+        <div class="ss-card will-reveal" data-rotation="0" style="max-width: 576px;">
+            <img
+                src="./MY PROFESSIONAL REFERRALS %26 REFERENCES/Linda%20Traylinek%20-%20testimonial.png"
+                alt="Linda Traylinek LinkedIn recommendation"
+            >
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     CLOSING
+     ========================================================= -->
+<div class="marquee on-dark">
+    <div class="marquee-track">
+        <span>STILL WANT MORE?</span><span class="marquee-sep">✦</span><span>STILL WANT MORE?</span><span class="marquee-sep">✦</span><span>STILL WANT MORE?</span><span class="marquee-sep">✦</span><span>STILL WANT MORE?</span><span class="marquee-sep">✦</span>
+        <span>STILL WANT MORE?</span><span class="marquee-sep">✦</span><span>STILL WANT MORE?</span><span class="marquee-sep">✦</span><span>STILL WANT MORE?</span><span class="marquee-sep">✦</span><span>STILL WANT MORE?</span><span class="marquee-sep">✦</span>
+    </div>
+</div>
+
+<section class="closing" style="padding-top: 14rem;">
+    <div style="margin-left: 20%;">
+        <div class="closing-headline" style="margin-bottom: 0; font-size: clamp(4.48rem, 13.44vw, 15.68rem);">
+            <span class="clip"><span>LET'S TALK.</span></span>
+        </div>
+        <div class="will-reveal" style="display: flex; gap: 4rem; align-items: center; justify-content: flex-end; margin-top: -2rem;">
+            <a href="mailto:barbs@reelrepurpose.com" style="display: block; opacity: 0.9; transition: opacity 0.2s; position: relative; left: 1.5rem;">
+                <img src="./email_yellow_icon.png" alt="Email" style="width: 43px; height: 43px; object-fit: contain;">
+            </a>
+            <a href="https://www.linkedin.com/in/barbsdolak/" target="_blank" rel="noopener noreferrer" style="display: block; opacity: 0.9; transition: opacity 0.2s; position: relative; top: 0.35rem;">
+                <img src="./linkedin_yellow_icon.PNG" alt="LinkedIn" style="width: 108px; height: 108px; object-fit: contain;">
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<div id="bd-fullname">Barbara Dolak</div>
+<div id="bd-monogram">bd</div>
+
+<!-- =========================================================
+     GSAP
+     ========================================================= -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// ---- GSAP failure fallback: if CDN doesn't load, reveal everything ----
+window.setTimeout(function() {
+    if (typeof gsap === 'undefined') {
+        document.querySelectorAll('.will-reveal, .ss-card, .imsg').forEach(function(el) {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+        });
+        document.querySelectorAll('.q-giant .clip span, .q-large .clip span, .closing-headline .clip span').forEach(function(el) {
+            el.style.transform = 'translateY(0)';
+        });
+        return;
+    }
+}, 2500);
+
+// ---- Set initial states for SCROLL-TRIGGERED elements only (not hero — hero uses CSS animations) ----
+gsap.set('.q-giant .clip span, .q-large .clip span, .closing-headline .clip span', { yPercent: 110 });
+gsap.set('.will-reveal', { opacity: 0, y: 30 });
+gsap.set('.imsg', { opacity: 0, y: 40 });
+gsap.set('#b1, #b2', { opacity: 0, y: 15, scale: 0.96 });
+gsap.set('.ss-card', { opacity: 0, y: 50 });
+
+// ---- Reusable: clip line reveal ----
+document.querySelectorAll('.q-giant, .q-large, .closing-headline').forEach(el => {
+    const spans = el.querySelectorAll('.clip span');
+    ScrollTrigger.create({
+        trigger: el,
+        start: 'top 82%',
+        onEnter: () => {
+            gsap.to(spans, {
+                yPercent: 0,
+                duration: 1.1,
+                ease: 'expo.out',
+                stagger: 0.1
+            });
+        }
+    });
+});
+
+// ---- Reusable: will-reveal ----
+document.querySelectorAll('.will-reveal').forEach(el => {
+    ScrollTrigger.create({
+        trigger: el,
+        start: 'top 88%',
+        onEnter: () => {
+            gsap.to(el, {
+                opacity: 1,
+                y: 0,
+                duration: 0.85,
+                ease: 'power2.out'
+            });
+        }
+    });
+});
+
+// ---- Screenshots — staggered rotate+fade ----
+document.querySelectorAll('.ss-card').forEach((card, i) => {
+    if (card.id === 'craig-card') return; // has its own custom animation
+    const finalRot = card.hasAttribute('data-rotation') ? parseFloat(card.dataset.rotation) : (card.style.transform.includes('-') ? -2 : 2);
+    ScrollTrigger.create({
+        trigger: card,
+        start: 'top 88%',
+        onEnter: () => {
+            gsap.to(card, {
+                opacity: 1,
+                y: 0,
+                rotation: finalRot,
+                duration: 1.1,
+                ease: 'expo.out',
+                delay: i * 0.08
+            });
+        }
+    });
+});
+
+
+// ---- Ch3 headline — typewriter ----
+(function() {
+    const el = document.getElementById('ch3-headline');
+    if (!el) return;
+    const parts = el.innerHTML.split(/(<br\s*\/?>)/i);
+    el.innerHTML = parts.map(part =>
+        /^<br/i.test(part) ? part : part.split('').map(c => `<span class="tw-char">${c}</span>`).join('')
+    ).join('');
+    gsap.set('#ch3-headline .tw-char', { opacity: 0 });
+    ScrollTrigger.create({
+        trigger: el,
+        start: 'top 85%',
+        onEnter: () => {
+            gsap.to('#ch3-headline .tw-char', { opacity: 1, duration: 0.01, stagger: 0.042, ease: 'none' });
+        }
+    });
+})();
+
+// ---- Craig card — peel in from left ----
+(function() {
+    const el = document.getElementById('craig-card');
+    if (!el) return;
+    gsap.set(el, { clipPath: 'inset(0 100% 0 0)', opacity: 1, y: 0 });
+    ScrollTrigger.create({
+        trigger: el,
+        start: 'top 85%',
+        once: true,
+        onEnter: () => {
+            gsap.to(el, {
+                clipPath: 'inset(0 0% 0 0)',
+                duration: 1.8,
+                ease: 'expo.inOut'
+            });
+        }
+    });
+})();
+
+// ---- Ch2 context — typewriter ----
+(function() {
+    const el = document.getElementById('ch2-context');
+    if (!el) return;
+    const raw = el.innerHTML;
+    const chars = raw.split(/(<br\s*\/?>)/i);
+    el.innerHTML = chars.map(part =>
+        /^<br/i.test(part) ? part : part.split('').map(c => `<span class="tw-char">${c}</span>`).join('')
+    ).join('');
+    gsap.set('#ch2-context .tw-char', { opacity: 0 });
+    ScrollTrigger.create({
+        trigger: el,
+        start: 'top 85%',
+        onEnter: () => {
+            gsap.to('#ch2-context .tw-char', { opacity: 1, duration: 0.01, stagger: 0.035, ease: 'none' });
+        }
+    });
+})();
+
+// ---- Deco quote marks — scroll fade in ----
+document.querySelectorAll('.deco-quote').forEach(el => {
+    gsap.fromTo(el,
+        { opacity: 0, y: -24 },
+        {
+            opacity: 0.78,
+            y: 0,
+            duration: 1.4,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: el,
+                start: 'top 90%',
+            }
+        }
+    );
+});
+
+// ---- Imran quote — typewriter + delayed attr ----
+(function() {
+    const el = document.getElementById('imran-quote');
+    const attr = document.getElementById('imran-attr');
+    if (!el || !attr) return;
+    const raw = el.textContent.trim();
+    el.innerHTML = raw.split('').map(c => `<span class="tw-char">${c}</span>`).join('');
+    const chars = el.querySelectorAll('.tw-char');
+    const stagger = 0.022;
+    const totalDuration = chars.length * stagger;
+    gsap.set(el, { opacity: 1 });
+    gsap.set(chars, { opacity: 0 });
+    gsap.set(attr, { opacity: 0, y: 30 });
+    ScrollTrigger.create({
+        trigger: el,
+        start: 'top 80%',
+        once: true,
+        onEnter: () => {
+            gsap.to(chars, { opacity: 1, duration: 0.01, stagger: stagger, ease: 'none' });
+            gsap.to(attr, { opacity: 1, y: 0, duration: 0.85, ease: 'power2.out', delay: totalDuration });
+        }
+    });
+})();
+
+// ---- Gadi quote — typewriter (both halves, continuous) ----
+(function() {
+    const el1 = document.getElementById('gadi-quote');
+    const el2 = document.getElementById('gadi-quote-2');
+    if (!el1 || !el2) return;
+
+    const raw1 = el1.textContent.trim();
+    el1.innerHTML = raw1.split('').map(c => `<span class="tw-char">${c}</span>`).join('');
+    gsap.set('#gadi-quote .tw-char', { opacity: 0 });
+
+    const raw2 = el2.textContent.trim();
+    el2.innerHTML = raw2.split('').map(c => `<span class="tw-char">${c}</span>`).join('');
+    gsap.set('#gadi-quote-2 .tw-char', { opacity: 0 });
+
+    const part1Duration = raw1.length * 0.022;
+
+    ScrollTrigger.create({
+        trigger: el1,
+        start: 'top 85%',
+        once: true,
+        onEnter: () => {
+            gsap.to('#gadi-quote .tw-char', {
+                opacity: 1,
+                duration: 0.01,
+                stagger: 0.022,
+                ease: 'none'
+            });
+            gsap.to('#gadi-quote-2 .tw-char', {
+                opacity: 1,
+                duration: 0.01,
+                stagger: 0.022,
+                ease: 'none',
+                delay: part1Duration
+            });
+        }
+    });
+})();
+
+// ---- Geoff quote — typewriter ----
+(function() {
+    const el = document.getElementById('geoff-quote');
+    if (!el) return;
+    const raw = el.textContent.trim();
+    el.innerHTML = raw.split('').map(c => `<span class="tw-char">${c}</span>`).join('');
+    gsap.set('#geoff-quote .tw-char', { opacity: 0 });
+    ScrollTrigger.create({
+        trigger: el,
+        start: 'top 85%',
+        onEnter: () => {
+            gsap.to('#geoff-quote .tw-char', {
+                opacity: 1,
+                duration: 0.01,
+                stagger: 0.022,
+                ease: 'none'
+            });
+        }
+    });
+})();
+
+// ---- Brandon quote — typewriter + delayed attr ----
+(function() {
+    const el = document.getElementById('brandon-quote');
+    const attr = document.getElementById('brandon-attr');
+    if (!el || !attr) return;
+    const parts = el.innerHTML.split(/(<br\s*\/?>)/i);
+    el.innerHTML = parts.map(part =>
+        /^<br/i.test(part) ? part : part.split('').map(c => `<span class="tw-char">${c}</span>`).join('')
+    ).join('');
+    const chars = el.querySelectorAll('.tw-char');
+    const stagger = 0.022;
+    const totalDuration = chars.length * stagger;
+    gsap.set(el, { opacity: 1 });
+    gsap.set(chars, { opacity: 0 });
+    gsap.set(attr, { opacity: 0, y: 30 });
+    ScrollTrigger.create({
+        trigger: el,
+        start: 'top 75%',
+        once: true,
+        onEnter: () => {
+            gsap.to(chars, { opacity: 1, duration: 0.01, stagger: stagger, ease: 'none' });
+            gsap.to(attr, { opacity: 1, y: 0, duration: 0.85, ease: 'power2.out', delay: 0.4 });
+        }
+    });
+})();
+
+// ---- Ch.10 headline — typewriter ----
+(function() {
+    const el = document.getElementById('ch10-headline');
+    if (!el) return;
+    const parts = el.innerHTML.split(/(<br\s*\/?>)/i);
+    el.innerHTML = parts.map(part =>
+        /^<br/i.test(part) ? part : part.split('').map(c => `<span class="tw-char">${c}</span>`).join('')
+    ).join('');
+    gsap.set('#ch10-headline .tw-char', { opacity: 0 });
+    ScrollTrigger.create({
+        trigger: el,
+        start: 'top 85%',
+        once: true,
+        onEnter: () => {
+            gsap.to('#ch10-headline .tw-char', { opacity: 1, duration: 0.01, stagger: 0.038, ease: 'none' });
+        }
+    });
+})();
+
+// ---- Ch.09 yellow circle — counter-scroll + mouse parallax ----
+(function() {
+    const circle = document.getElementById('ch9-circle');
+    const section = document.getElementById('ch9-brittany');
+    if (!circle || !section) return;
+
+    circle.style.willChange = 'transform';
+
+    const MAX_DRIFT = 45;
+    const LERP = 0.07;
+
+    let scrollY = 0;
+    let isVisible = false;
+    let targetX = 0, targetY = 0;
+    let lerpX = 0, lerpY = 0;
+
+    function onScroll() {
+        const top = section.getBoundingClientRect().top;
+        const maxScroll = section.offsetHeight - window.innerHeight;
+        if (top > window.innerHeight || -top > maxScroll) {
+            isVisible = false;
+            scrollY = top > 0 ? 0 : maxScroll;
+            targetX = 0; targetY = 0; return;
+        }
+        isVisible = true;
+        scrollY = top > 0 ? 0 : -top;
+    }
+
+    function onMouseMove(e) {
+        if (!isVisible) return;
+        const cx = window.innerWidth / 2;
+        const cy = window.innerHeight / 2;
+        targetX = ((e.clientX - cx) / cx) * MAX_DRIFT;
+        targetY = ((e.clientY - cy) / cy) * MAX_DRIFT;
+    }
+
+    function tick() {
+        lerpX += (targetX - lerpX) * LERP;
+        lerpY += (targetY - lerpY) * LERP;
+        circle.style.transform = 'translate3d(' + lerpX.toFixed(2) + 'px,' + (scrollY + lerpY).toFixed(2) + 'px,0)';
+        requestAnimationFrame(tick);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('mousemove', onMouseMove);
+    onScroll();
+    tick();
+})();
+
+// ---- Ch.08 VOUCHED — pin ----
+(function() {
+    const word = document.getElementById('ch8-bg-word');
+    const section = document.getElementById('ch8-stitch');
+    if (!word || !section) return;
+    ScrollTrigger.create({
+        trigger: section,
+        start: 'top top',
+        end: 'bottom bottom',
+        pin: word,
+        pinSpacing: false,
+    });
+})();
+
+// ---- Board quote — typewriter ----
+(function() {
+    const el = document.getElementById('board-quote');
+    if (!el) return;
+    const raw = el.textContent.trim();
+    el.innerHTML = raw.split('').map(c => `<span class="tw-char">${c}</span>`).join('');
+    gsap.set('#board-quote .tw-char', { opacity: 0 });
+    ScrollTrigger.create({
+        trigger: el,
+        start: 'top 85%',
+        onEnter: () => {
+            gsap.to('#board-quote .tw-char', {
+                opacity: 1,
+                duration: 0.01,
+                stagger: 0.022,
+                ease: 'none'
+            });
+        }
+    });
+})();
+
+// ---- Layered board documents ----
+ScrollTrigger.create({
+    trigger: '#layered-docs',
+    start: 'top 80%',
+    onEnter: () => {
+        gsap.timeline()
+            .from('#doc-behind', {
+                opacity: 0,
+                y: 60,
+                duration: 1.1,
+                ease: 'expo.out'
+            })
+            .from('#doc-front', {
+                opacity: 0,
+                y: 80,
+                x: -30,
+                duration: 1.1,
+                ease: 'expo.out'
+            }, '-=0.55');
+    }
+});
+
+// ---- iMessage card ----
+ScrollTrigger.create({
+    trigger: '#imsg',
+    start: 'top 80%',
+    onEnter: () => {
+        gsap.to('#imsg', {
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            ease: 'power3.out',
+            onComplete: () => {
+                gsap.to('#b1', { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: 'back.out(1.3)' });
+                gsap.to('#b2', { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: 'back.out(1.3)', delay: 0.6 });
+            }
+        });
+    }
+});
+
+// ---- Parallax bg words ----
+document.querySelectorAll('.bg-word').forEach(el => {
+    if (el.id === 'ch8-bg-word') return; // sticky pin — skip parallax
+    gsap.to(el, {
+        y: -120,
+        ease: 'none',
+        scrollTrigger: {
+            trigger: el.parentElement,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1.5
+        }
+    });
+});
+
+
+// ---- Chapter labels ----
+document.querySelectorAll('.chapter-label').forEach(el => {
+    ScrollTrigger.create({
+        trigger: el,
+        start: 'top 85%',
+        onEnter: () => {
+            gsap.to(el, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' });
+        }
+    });
+});
+
+// ---- Hero sub typewriter ----
+(function () {
+    const el = document.getElementById('hero-sub');
+    const fullText = el.textContent.trim();
+    el.textContent = '';
+    el.style.opacity = '1';
+    [...fullText].forEach(char => {
+        const span = document.createElement('span');
+        span.textContent = char;
+        span.style.opacity = '0';
+        el.appendChild(span);
+    });
+    gsap.to(el.querySelectorAll('span'), {
+        opacity: 1,
+        duration: 0.001,
+        stagger: 0.04,
+        delay: 2.4,
+        ease: 'none'
+    });
+})();
+
+// ---- BD Fullname + Monogram sequence ----
+ScrollTrigger.create({
+    trigger: '.hero',
+    start: 'bottom 60%',
+    onEnter: () => {
+        // Hero scrolling out — hide fullname, then reveal monogram
+        gsap.to('#bd-fullname', { clipPath: 'circle(0% at 100% 100%)', duration: 0.5, ease: 'power2.in' });
+        gsap.to('#bd-monogram', { clipPath: 'circle(150% at 100% 100%)', duration: 1.0, delay: 0.6, ease: 'power2.out' });
+    },
+    onLeaveBack: () => {
+        // Scrolled back to hero — hide monogram, reveal fullname
+        gsap.to('#bd-monogram', { clipPath: 'circle(0% at 100% 100%)', duration: 0.5, ease: 'power2.in' });
+        gsap.to('#bd-fullname', { clipPath: 'circle(150% at 100% 100%)', duration: 1.0, delay: 0.6, ease: 'power2.out' });
+    }
+});
+
+</script>
+</body>
+</html>
