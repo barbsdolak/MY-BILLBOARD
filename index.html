@@ -621,6 +621,537 @@
         @media (max-width: 768px) {
             .early-split { grid-template-columns: 1fr; gap: 4rem; }
             .chapter { padding: 5rem 6vw; }
+
+            /* CH.01 */
+            #ch1 {
+                padding-top: 3rem !important;
+            }
+            #ch1 #layered-docs {
+                margin-left: 2rem;
+            }
+            #ch1 .ch-num {
+                font-size: 4.9rem;
+            }
+            #ch1 .ch-info {
+                border-left: none;
+                padding-left: 1rem;
+                position: relative;
+            }
+            #ch1 .ch-info::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                height: 32px;
+                width: 1px;
+                background: rgba(240,240,238,0.4);
+            }
+            #ch1 .ch-company {
+                font-size: 0.8rem;
+            }
+            #ch1 .ch-title {
+                font-size: 0.72rem;
+            }
+            #ch1 .chapter-label {
+                margin-top: 5rem;
+                margin-bottom: 5rem;
+            }
+            #ch1 .q-giant {
+                font-size: 4.4rem !important;
+            }
+            br.mob-br { display: inline; }
+
+            /* CH.02 deco-quote + quote alignment */
+            #ch2 {
+                overflow: visible;
+            }
+            #craig-card {
+                float: none;
+                max-width: 100%;
+                margin-top: 0;
+                margin-left: 0;
+                margin-bottom: 4rem;
+            }
+            #ch2 .deco-quote {
+                font-size: 20rem;
+                left: -2rem;
+                top: auto;
+                position: relative;
+                display: block;
+                line-height: 0.6;
+                margin-top: 6rem;
+                margin-bottom: 1rem;
+            }
+            #craig-pull {
+                margin-top: -10.5rem !important;
+                margin-left: 1rem;
+            }
+
+            /* CH.02 */
+            #ch2 .chapter-label {
+                margin-left: 0;
+                gap: 1rem;
+            }
+            #ch2 .ch-num {
+                font-size: 4.9rem;
+            }
+            #ch2 .ch-company {
+                font-size: 0.8rem;
+            }
+            #ch2 .ch-title {
+                font-size: 0.72rem;
+            }
+            #ch2 .ch-info {
+                border-left: none;
+                padding-left: 1.2rem;
+                position: relative;
+            }
+            #ch2 .ch-info::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                height: 32px;
+                width: 1px;
+                background: rgba(240,240,238,0.4);
+            }
+
+            /* CH.03 */
+            #ch3 {
+                display: flex;
+                flex-direction: column;
+            }
+            #ch3-headline {
+                font-size: clamp(3.85rem, 8.35vw, 10.27rem) !important;
+                margin-bottom: 3rem !important;
+                order: 1;
+            }
+            #ch3 > .ch-context {
+                margin-top: 1rem !important;
+                order: 2;
+            }
+            #ch3 .ch3-quote-wrap {
+                order: 4;
+                position: relative;
+                max-width: 30rem;
+                margin: 3.5rem auto 1rem;
+            }
+            #ch3 .ch3-mobile-quote {
+                display: block;
+                position: relative;
+                z-index: 1;
+                font-family: var(--font-serif);
+                font-size: 1.05rem;
+                line-height: 1.7;
+                letter-spacing: 0.02em;
+                text-align: right;
+                color: rgba(8,8,8,0.75);
+                margin-top: 1.5rem;
+            }
+            #ch3 #ch3-deco-quote {
+                display: block;
+                position: absolute;
+                top: -2.5rem;
+                left: -0.5rem;
+                font-size: 14.85rem;
+                line-height: 0.85;
+                background: linear-gradient(to bottom, #e4e4e2 0%, #c2c2be 100%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                -webkit-text-fill-color: transparent;
+                z-index: 0;
+            }
+            #ch3 .ch3-image-wrap {
+                order: 3;
+            }
+            #ch3 > .chapter-label {
+                order: 5;
+                margin-top: 3rem;
+                gap: 1rem;
+                justify-content: flex-start !important;
+            }
+            #ch3 .ch-num {
+                font-size: 2.87rem !important;
+            }
+            #ch3 .ch-info {
+                padding-left: 1.2rem;
+            }
+            #ch3 .ch-company {
+                font-size: 0.8rem;
+            }
+            #ch3 .ch-title {
+                font-size: 0.72rem;
+            }
+            #ch3 .ss-card {
+                width: 99.77vw !important;
+                max-width: 99.77vw !important;
+                margin-left: 0vw;
+                border-radius: 0;
+            }
+
+            /* BANNER — THE TECHNICAL VOTE (before Ch.03) */
+            #marquee-ch3 .marquee-track span {
+                padding: 0 1.1rem;
+            }
+
+            /* BANNER — NO ESCALATIONS. JUST ELEVATION. (before Ch.04) */
+            #marquee-ch4 .marquee-track span {
+                padding: 0 1.1rem;
+            }
+
+            /* CH.04 bg-word — force inline-block so iOS Safari actually applies the scale transform */
+            #ch4-bg-word {
+                display: inline-block;
+                transform-origin: left bottom;
+            }
+
+            /* CH.04 chapter-label — "04" + divider moved to the right of the intro statement */
+            #ch4-shopify .chapter-label {
+                gap: 1rem;
+            }
+            #ch4-shopify .ch-info {
+                order: 1;
+                border-left: none;
+                padding-left: 0;
+            }
+            #ch4-shopify .ch-num {
+                order: 2;
+                font-size: 5.25rem;
+                padding-left: 1.2rem;
+                position: relative;
+            }
+            #ch4-shopify .ch-num::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                height: 4.9rem;
+                width: 1px;
+                background: rgba(240,240,238,0.68);
+            }
+
+            /* CH.04 grid — Got Trust headline bigger, Sari's quote moved below the image, right-aligned */
+            #ch4-shopify .grid-2 {
+                display: flex;
+                flex-direction: column;
+            }
+            #ch4-shopify .grid-2 > div:nth-child(1),
+            #ch4-shopify .grid-2 > div:nth-child(2) {
+                display: contents !important;
+            }
+            #ch4-shopify .grid-2 .q-giant {
+                font-size: clamp(5.35rem, 13.91vw, 16.05rem) !important;
+                order: 1;
+            }
+            #ch4-shopify .grid-2 > div:nth-child(1) img {
+                order: 2;
+            }
+            #ch4-shopify .grid-2 .ch4-sari-wrap {
+                order: 3;
+                margin-top: 2.5rem !important;
+                margin-left: 0 !important;
+                text-align: right;
+            }
+            #ch4-shopify .grid-2 .ss-card {
+                order: 4;
+                margin-top: 2.5rem;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+            #ch4-shopify .ch4-imran-wrap {
+                margin-top: 3.5rem !important;
+            }
+            #ch4-shopify .attr {
+                font-size: 0.6rem;
+            }
+            #ch4-shopify .attr strong {
+                font-size: 0.8rem;
+            }
+
+            /* CH.05 chapter-label — widen the intro statement, tighten the divider gap, match Craig's name/title sizing */
+            #ch5-joe .chapter-label {
+                gap: 0.6rem;
+            }
+            #ch5-joe .ch-info {
+                flex: 1;
+            }
+            #ch5-joe .ch-num {
+                font-size: 4.4rem !important;
+                padding-left: 0.7rem !important;
+            }
+            #ch5-joe .ch-company {
+                font-size: 0.8rem;
+            }
+            #ch5-joe .ch-title {
+                font-size: 0.72rem;
+            }
+            #ch5-joe #ch5-headline-desktop {
+                display: none;
+            }
+            #ch5-joe .ch5-headline-mobile {
+                display: block;
+            }
+            #ch5-joe .ch5-quote-wrap {
+                margin-left: 0 !important;
+                margin-top: 2.5rem;
+                margin-bottom: 1.5rem;
+            }
+            #ch5-joe #imsg {
+                max-width: 282px;
+                margin-left: auto;
+                margin-right: 0;
+            }
+
+            /* CH.06 chapter-label — widen the name/title container */
+            #ch6-geoff {
+                padding-top: 14.5rem !important;
+            }
+            #ch6-geoff .chapter-label {
+                gap: 1rem;
+            }
+            #ch6-geoff .ch-info {
+                flex: 1;
+                padding-left: 1rem;
+            }
+            #ch6-geoff .q-giant {
+                font-size: clamp(3.565rem, 8.56vw, 10.69rem) !important;
+                margin-top: 8rem !important;
+                margin-bottom: 8.5rem !important;
+            }
+            #ch6-geoff .q-giant .clip:first-child {
+                margin-bottom: 0.6rem;
+            }
+            #ch6-geoff #geoff-quote {
+                margin-top: -2rem;
+            }
+
+            /* BANNER — WHAT COULD I DO FOR YOU IN 45 DAYS? (1st banner, after Hero) */
+            #marquee-hero .marquee-track span {
+                padding: 0 1.1rem;
+            }
+
+            /* BANNER — MOST LIKELY TO GO ALL IN (2nd banner, before Ch.02) */
+            #marquee-ch2 .marquee-track span {
+                padding: 0 1.1rem;
+            }
+
+            /* BANNER — SOME PEOPLE RAMP UP. OTHERS HIT THE GROUND RUNNING. (before Ch.07) */
+            #marquee-ch7 .marquee-track span {
+                padding: 0 1.1rem;
+            }
+
+            /* CH.07 deco-quote + headline */
+            #ch7-deco-quote {
+                left: -2rem !important;
+            }
+            #ch7-gadi .q-giant {
+                font-size: clamp(3.88rem, 9.06vw, 11.65rem) !important;
+                padding-top: 0.8rem !important;
+                margin-bottom: 5.7rem !important;
+            }
+            #ch7-gadi .ch7-grid {
+                display: flex !important;
+                flex-direction: column;
+                gap: 3rem;
+            }
+            #ch7-gadi .ch7-image-wrap {
+                padding-top: 0 !important;
+            }
+            #ch7-gadi .ss-card {
+                width: 99.75% !important;
+                max-width: none !important;
+                margin-left: 3rem !important;
+                margin-right: 0 !important;
+                margin-top: -1.5rem;
+                margin-bottom: 2rem;
+                border-radius: 0 !important;
+                box-shadow: 0 30px 70px rgba(120,118,112,0), 0 10px 26px rgba(90,88,84,0) !important;
+            }
+            #ch7-gadi .ch-num {
+                font-size: 4rem !important;
+                color: #3a3a38 !important;
+                opacity: 1 !important;
+            }
+            #ch7-gadi .ch7-attr-row {
+                align-items: flex-start !important;
+            }
+            #ch7-gadi .attr {
+                color: #3a3a38 !important;
+                opacity: 1 !important;
+            }
+            #ch7-gadi .attr strong {
+                font-size: 0.8rem !important;
+                margin-bottom: 0 !important;
+            }
+            #ch7-gadi .attr span {
+                font-size: 0.72rem !important;
+                font-weight: 400 !important;
+                letter-spacing: normal !important;
+                text-transform: none !important;
+            }
+
+            /* CH.08 */
+            #ch8-stitch .chapter-label {
+                gap: 1rem;
+            }
+            #ch8-stitch .ch-num {
+                color: #a09e98;
+                opacity: 1;
+                border-left: none !important;
+                position: relative;
+            }
+            #ch8-stitch .ch-num::before {
+                content: '';
+                position: absolute;
+                left: 0.6rem;
+                top: 0;
+                bottom: 0;
+                width: 1px;
+                background: currentColor;
+            }
+            #ch8-stitch .q-giant {
+                font-size: clamp(3.45rem, 8.05vw, 10.35rem) !important;
+            }
+            #ch8-stitch #brandon-quote {
+                margin-top: 2rem !important;
+                text-align: right;
+                margin-left: auto;
+                max-width: 92% !important;
+            }
+            #ch8-stitch .grid-2 .ss-card {
+                margin-top: 3rem !important;
+                max-width: 90.24% !important;
+                margin-left: auto !important;
+                margin-right: 0 !important;
+            }
+            #ch8-bg-word {
+                font-size: clamp(9.8rem, 29.4vw, 37.24rem);
+            }
+            #ch8-stitch #brandon-attr {
+                font-size: 0.6rem !important;
+                -webkit-text-size-adjust: 100%;
+                text-size-adjust: 100%;
+                text-align: left !important;
+                max-width: 90.24% !important;
+                margin-left: auto !important;
+                margin-top: 0.5rem !important;
+                padding-left: 1rem;
+            }
+            #ch8-stitch #brandon-attr strong {
+                font-size: 0.68rem !important;
+                -webkit-text-size-adjust: 100%;
+                text-size-adjust: 100%;
+            }
+
+            /* BANNER — FOUNDER DNA, ENTERPRISE SCALE. (before Ch.09) */
+            #marquee-ch9 .marquee-track span {
+                padding: 0 1.1rem;
+            }
+
+            /* CH.09 circle */
+            #ch9-circle {
+                justify-content: center !important;
+                margin-right: 0 !important;
+                margin-top: 0 !important;
+            }
+            #ch9-circle .ch9-circle-inner {
+                width: clamp(320px, 62vw, 520px) !important;
+                height: clamp(320px, 62vw, 520px) !important;
+            }
+            #ch9-brittany .chapter-label {
+                margin-top: 2rem;
+            }
+            #ch9-brittany .ch-num {
+                margin-top: 0.4rem;
+            }
+            #ch9-brittany .ch-company {
+                margin-top: 1.5rem;
+                font-size: 0.8rem;
+            }
+            #ch9-brittany .ch-title {
+                font-size: 0.72rem;
+            }
+            #ch9-brittany .ch-info {
+                padding-right: 0;
+                margin-right: 0;
+                border-left: none !important;
+                position: relative;
+                padding-left: 1.2rem;
+            }
+            #ch9-brittany .ch-info::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                height: 4rem;
+                width: 1px;
+                background: currentColor;
+            }
+            #ch9-brittany .q-giant {
+                margin-left: 0;
+                margin-right: 0;
+                font-size: clamp(3.48rem, 8.35vw, 10.44rem) !important;
+            }
+            #ch9-brittany #ch9-headline-desktop {
+                display: none;
+            }
+            #ch9-brittany .ch9-headline-mobile {
+                display: block;
+            }
+
+            /* CH.10 */
+            #ch10-linda .ch10-quote-wrap {
+                margin-left: 0 !important;
+                text-align: right;
+            }
+            #ch10-linda .q-large {
+                max-width: 100% !important;
+            }
+            #ch10-linda .ch10-image-wrap {
+                justify-content: flex-end !important;
+                padding-right: 0 !important;
+                margin-top: 2rem !important;
+            }
+            #ch10-linda .ss-card {
+                width: 129.6% !important;
+                max-width: none !important;
+            }
+
+            /* BANNER — STILL WANT MORE? (last banner, before Closing) */
+            #marquee-closing .marquee-track span {
+                padding: 0 1.1rem;
+            }
+
+            /* CLOSING */
+            .closing-inner-wrap {
+                margin-left: 8% !important;
+            }
+            .closing-headline {
+                font-size: clamp(4.79rem, 14.38vw, 16.78rem) !important;
+            }
+            .closing .will-reveal {
+                margin-top: -0.6rem !important;
+                margin-bottom: 2rem;
+            }
+
+            /* HERO */
+            .hero {
+                background-size: cover;
+                background-position: 60% center;
+                justify-content: flex-start;
+                padding-top: 3.8rem;
+            }
+            .hero-headline {
+                font-size: clamp(5.5rem, 16vw, 16rem);
+            }
+            .hero-sub {
+                margin-top: 4.5rem;
+            }
         }
 
         /* ======= CLOSING ======= */
@@ -722,6 +1253,11 @@
 
         /* ======= GSAP INITIAL STATES (set via JS) ======= */
         .will-reveal { opacity: 0; }
+        .mob-br { display: none; }
+        .ch3-mobile-quote { display: none; }
+        #ch3-deco-quote { display: none; }
+        .ch5-headline-mobile { display: none; }
+        .ch9-headline-mobile { display: none; }
 
         /* ---- BD Monogram ---- */
         #bd-monogram, #bd-fullname {
@@ -752,7 +1288,7 @@
      ========================================================= -->
 <section class="hero">
     <div class="hero-overlay"></div>
-    <p class="hero-eyebrow">A look at the momentum we can build together</p>
+    <p class="hero-eyebrow">A look at the momentum<br class="mob-br"> we can build together</p>
     <h1 class="hero-headline">
         <span class="clip"><span>DON'T TAKE</span></span>
         <span class="clip"><span>MY WORD</span></span>
@@ -767,7 +1303,7 @@
 <!-- =========================================================
      CHAPTER 01 — FRACTIONAL CMO / NOW
      ========================================================= -->
-<div class="marquee on-dark">
+<div class="marquee on-dark" id="marquee-hero">
     <div class="marquee-track" style="animation-duration: 40s;">
         <span>WHAT COULD I DO FOR YOU IN 45 DAYS?</span><span class="marquee-sep">✦</span><span>WHAT COULD I DO FOR YOU IN 45 DAYS?</span><span class="marquee-sep">✦</span><span>WHAT COULD I DO FOR YOU IN 45 DAYS?</span><span class="marquee-sep">✦</span><span>WHAT COULD I DO FOR YOU IN 45 DAYS?</span><span class="marquee-sep">✦</span>
         <span>WHAT COULD I DO FOR YOU IN 45 DAYS?</span><span class="marquee-sep">✦</span><span>WHAT COULD I DO FOR YOU IN 45 DAYS?</span><span class="marquee-sep">✦</span><span>WHAT COULD I DO FOR YOU IN 45 DAYS?</span><span class="marquee-sep">✦</span><span>WHAT COULD I DO FOR YOU IN 45 DAYS?</span><span class="marquee-sep">✦</span>
@@ -781,14 +1317,14 @@
         <div class="ch-num" style="opacity: 0.15;">01</div>
         <div class="ch-info" style="opacity: 1;">
             <div class="ch-company" style="color: rgba(240,240,238,0.55);">Jonathan Connolly</div>
-            <div class="ch-title" style="color: rgba(240,240,238,0.45);">President & COO, Wealth Advisors Trust Company</div>
+            <div class="ch-title" style="color: rgba(240,240,238,0.45);">President & COO,<br class="mob-br"> Wealth Advisors Trust Company</div>
             <div class="ch-context" style="font-family: var(--font-sans); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.7; color: rgba(240,240,238,0.88);">where Barbs serves as the Fractional CMO</div>
         </div>
     </div>
 
     <!-- Full-width headline: first two lines above the grid -->
     <div class="q-giant" style="font-size: clamp(3.2rem, 9.6vw, 11.2rem); margin-bottom: 0;">
-        <span class="clip"><span>IN 45 DAYS, SHE GAVE THE</span></span>
+        <span class="clip"><span>IN 45 DAYS,<br class="mob-br"> SHE GAVE THE</span></span>
         <span class="clip"><span>PRESIDENT SOMETHING</span></span>
     </div>
 
@@ -844,7 +1380,7 @@
         <div class="ch-num">02</div>
         <div class="ch-info" style="opacity: 1;">
             <div class="ch-company" style="color: rgba(240,240,238,0.4);">Craig Gottlieb</div>
-            <div class="ch-title" style="color: rgba(240,240,238,0.4);">Senior Client Relations Executive, Valtech (Global Digital Agency)</div>
+            <div class="ch-title" style="color: rgba(240,240,238,0.4);">Senior Client Relations Executive,<br class="mob-br"> Valtech (Global Digital Agency)</div>
             <div id="ch2-context" style="font-family: var(--font-sans); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(240,240,238,0.88); margin-top: 0.75rem; line-height: 1.7;">Three years partnering together on deals in the ecom ecosystem.<br>Barbs on the tech side. Craig on the agency implementation side.</div>
         </div>
     </div>
@@ -855,10 +1391,10 @@
     </div>
 
     <div style="position: relative; padding-top: 1rem;">
-        <span class="deco-quote">&ldquo;</span>
         <div class="ss-card" id="craig-card" style="float: right; max-width: 540px; margin-left: 4rem; margin-top: -5rem; margin-bottom: 2rem;">
             <img src="./MY PROFESSIONAL REFERRALS %26 REFERENCES/Craig Gottlieb - testimonial.png" alt="Craig Gottlieb LinkedIn recommendation">
         </div>
+        <span class="deco-quote">&ldquo;</span>
         <p class="q-body will-reveal" id="craig-pull" style="margin-top: 1rem; margin-bottom: 0.4rem; position: relative; z-index: 1; max-width: none;">
             She has a keen understanding of the business challenge and what it takes to drive business outcomes. She did an amazing job listening to the prospect, consulting with me on win themes and partnering throughout our joint pursuits. <strong>She takes great pride in her work and goes all in.</strong> And most importantly, she&rsquo;s a blast to work with!&rdquo;
         </p>
@@ -895,8 +1431,13 @@
 
     <div class="ch-context will-reveal" style="font-family: var(--font-sans); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.7; text-align: center; margin-top: 1.5rem; margin-bottom: 2.5rem; color: rgba(8,8,8,0.4);">He's technical. She's commercial. Same team. Opposite expertise. Deal after deal.</div>
 
-    <div style="margin: 0 auto; max-width: 990px; margin-top: 2rem;">
-        <div class="ss-card will-reveal" data-rotation="0" style="max-width: 100%; width: 100%;">
+    <div class="ch3-quote-wrap">
+        <span class="deco-quote" id="ch3-deco-quote">&ldquo;</span>
+        <div class="ch3-mobile-quote will-reveal">It's rare to meet someone who's as thorough as Barbs. She does impeccable research, has fanatical drive, and is as tenacious as they come. An absolute sponge for information, she's always asking questions to help understand the complexities of today's fast-moving commerce ecosystem. I always got a kick out of working with her, and I'm sure she'll excel in her next chapter.</div>
+    </div>
+
+    <div class="ch3-image-wrap" style="margin: 0 auto; max-width: 990px; margin-top: 2rem;">
+        <div class="ss-card will-reveal" id="matt-card" data-rotation="0" style="max-width: 100%; width: 100%;">
             <img src="./MY PROFESSIONAL REFERRALS %26 REFERENCES/Matt Dunphy - testimonial.png" alt="Matt Dunphy LinkedIn recommendation">
         </div>
     </div>
@@ -907,7 +1448,7 @@
 <!-- =========================================================
      CHAPTER 04 — SHOPIFY
      ========================================================= -->
-<div class="marquee on-dark">
+<div class="marquee on-dark" id="marquee-ch4">
     <div class="marquee-track">
         <span>NO ESCALATIONS. JUST ELEVATION.</span><span class="marquee-sep">✦</span><span>NO ESCALATIONS. JUST ELEVATION.</span><span class="marquee-sep">✦</span><span>NO ESCALATIONS. JUST ELEVATION.</span><span class="marquee-sep">✦</span><span>NO ESCALATIONS. JUST ELEVATION.</span><span class="marquee-sep">✦</span>
         <span>NO ESCALATIONS. JUST ELEVATION.</span><span class="marquee-sep">✦</span><span>NO ESCALATIONS. JUST ELEVATION.</span><span class="marquee-sep">✦</span><span>NO ESCALATIONS. JUST ELEVATION.</span><span class="marquee-sep">✦</span><span>NO ESCALATIONS. JUST ELEVATION.</span><span class="marquee-sep">✦</span>
@@ -915,7 +1456,7 @@
 </div>
 
 <section class="chapter dark" id="ch4-shopify" style="padding-top: 5rem;">
-    <span class="bg-word" style="bottom: -5%; left: -8%; font-size: clamp(6.6rem, 19.8vw, 25rem); color: #1a1a18; opacity: 1;">RELATIONSHIPS</span>
+    <span class="bg-word" id="ch4-bg-word" style="bottom: -5%; left: -8%; font-size: clamp(6.6rem, 19.8vw, 25rem); color: #1a1a18; opacity: 1;">RELATIONSHIPS</span>
 
     <div class="chapter-label will-reveal" style="margin-top: 3rem; margin-bottom: 3.5rem;">
         <div class="ch-num">04</div>
@@ -926,7 +1467,7 @@
 
     <div class="grid-2" style="align-items: start;">
         <div>
-            <div class="q-giant will-reveal" style="font-size: clamp(5rem, 13vw, 15rem); line-height: 0.88; margin-top: 0; margin-bottom: 1.5rem;">Got Trust?</div>
+            <div class="q-giant will-reveal" id="ch4-got-trust-headline" style="font-size: clamp(5rem, 13vw, 15rem); line-height: 0.88; margin-top: 0; margin-bottom: 1.5rem;">Got Trust?</div>
             <img src="./GotTrust.jpg" alt="Got Trust?" class="will-reveal" style="max-width: 74%; display: block;">
         </div>
 
@@ -937,7 +1478,7 @@
                     alt="Shopify internal Slack recognition"
                 >
             </div>
-            <div style="margin-top: 8rem; margin-left: -4rem;">
+            <div class="ch4-sari-wrap" style="margin-top: 8rem; margin-left: -4rem;">
                 <p class="q-body will-reveal">
                     "Huge shout out to @Barbarella for helping Launch reset the conversation... Barb used her relationship to help realign the project at launch, after the merchant team started going beyond the original scope."
                 </p>
@@ -948,7 +1489,7 @@
         </div>
     </div>
 
-    <div style="margin-top: 7rem;">
+    <div class="ch4-imran-wrap" style="margin-top: 7rem;">
         <p class="q-body" id="imran-quote" style="max-width: none;">
             "She drove full steam ahead, arranged and led the realignment meeting…Without Barbara stepping in and proactively supporting the launch, this could have been a launch filled with merchant escalations and negative experiences..."
         </p>
@@ -974,21 +1515,27 @@
 
     <div class="chapter-label will-reveal" style="justify-content: flex-end; text-align: right;">
         <div class="ch-info" style="border-left: none; padding-left: 0; opacity: 1;">
-            <p class="ch-context" style="font-family: var(--font-sans); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.7; color: #ffffff;">A CRO doesn't text a former salesperson months after she leaves. But Joe Aleardi did.</p>
+            <p class="ch-context" style="font-family: var(--font-sans); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.7; color: #ffffff;">A CRO doesn't text a former salesperson months after she leaves.<br class="mob-br"> But Joe Aleardi did.</p>
             <div class="ch-company" style="margin-top: 1.2rem; color: rgba(240,240,238,0.4);">Joe Aleardi</div>
             <div class="ch-title" style="color: rgba(240,240,238,0.4);">CRO @Limble · Previously CRO @EDITED when Barbs was an Enterprise Account Executive</div>
         </div>
         <div class="ch-num" style="font-size: 5.25rem; border-left: 1px solid currentColor; padding-left: 2rem;">05</div>
     </div>
 
-    <div class="q-giant will-reveal" style="font-size: clamp(4rem, 11vw, 13rem); margin-bottom: 4rem;">
+    <div class="q-giant will-reveal" id="ch5-headline-desktop" style="font-size: clamp(4rem, 11vw, 13rem); margin-bottom: 4rem;">
         <span class="clip"><span>HER WORK</span></span>
         <span class="clip"><span>DOESN'T CLOCK OUT</span></span>
         <span class="clip"><span>WHEN SHE DOES.</span></span>
     </div>
 
+    <div class="q-giant will-reveal ch5-headline-mobile" style="font-size: clamp(4rem, 11vw, 13rem); margin-bottom: 4rem;">
+        <span class="clip"><span>HER WORK DOESN'T</span></span>
+        <span class="clip"><span>CLOCK OUT</span></span>
+        <span class="clip"><span>WHEN SHE DOES.</span></span>
+    </div>
+
     <div class="grid-2 flip">
-        <div style="margin-left: -6rem;">
+        <div class="ch5-quote-wrap" style="margin-left: -6rem;">
             <p class="q-body will-reveal" style="margin-bottom: 2rem;">
                 "You should've stayed. Your deals came in!! Thanks for all your hard work over the year, it certainly paid off for us. I owe you."
             </p>
@@ -1019,7 +1566,7 @@
         </div>
     </div>
 
-    <div class="q-giant" style="font-size: clamp(3.5rem, 8.4vw, 10.5rem); margin-top: 7rem; margin-bottom: 7rem; text-align: right;">
+    <div class="q-giant" id="ch6-headline" style="font-size: clamp(3.5rem, 8.4vw, 10.5rem); margin-top: 7rem; margin-bottom: 7rem; text-align: right;">
         <span class="clip"><span>MOST RESIGNATIONS GET HR.</span></span>
         <span class="clip"><span>HERS GOT THE CEO.</span></span>
     </div>
@@ -1043,7 +1590,7 @@
 <!-- =========================================================
      CHAPTER 07 — GADI BASHVITZ / STITCH LABS
      ========================================================= -->
-<div class="marquee on-dark" style="animation-duration: 40s;">
+<div class="marquee on-dark" id="marquee-ch7" style="animation-duration: 40s;">
     <div class="marquee-track" style="animation-duration: 40s;">
         <span>SOME PEOPLE RAMP UP. OTHERS HIT THE GROUND RUNNING.</span><span class="marquee-sep">✦</span><span>SOME PEOPLE RAMP UP. OTHERS HIT THE GROUND RUNNING.</span><span class="marquee-sep">✦</span><span>SOME PEOPLE RAMP UP. OTHERS HIT THE GROUND RUNNING.</span><span class="marquee-sep">✦</span><span>SOME PEOPLE RAMP UP. OTHERS HIT THE GROUND RUNNING.</span><span class="marquee-sep">✦</span>
         <span>SOME PEOPLE RAMP UP. OTHERS HIT THE GROUND RUNNING.</span><span class="marquee-sep">✦</span><span>SOME PEOPLE RAMP UP. OTHERS HIT THE GROUND RUNNING.</span><span class="marquee-sep">✦</span><span>SOME PEOPLE RAMP UP. OTHERS HIT THE GROUND RUNNING.</span><span class="marquee-sep">✦</span><span>SOME PEOPLE RAMP UP. OTHERS HIT THE GROUND RUNNING.</span><span class="marquee-sep">✦</span>
@@ -1060,19 +1607,19 @@
         </div>
     </div>
 
-    <div style="display: grid; grid-template-columns: 1.6fr 1fr; gap: 5rem; align-items: start;">
-        <div style="padding-top: 4rem;">
-            <div class="ss-card will-reveal" data-rotation="0" style="max-width: 662px;">
+    <div class="ch7-grid" style="display: grid; grid-template-columns: 1.6fr 1fr; gap: 5rem; align-items: start;">
+        <div class="ch7-image-wrap" style="padding-top: 4rem;">
+            <div class="ss-card will-reveal" id="gadi-card" data-rotation="0" style="max-width: 662px;">
                 <img
                     src="./MY PROFESSIONAL REFERRALS %26 REFERENCES/Gadi%20Bashvitz%20%28CEO%20%40BrightStar%20Security%29-%20testimonial.png"
                     alt="Gadi Bashvitz LinkedIn recommendation"
                 >
             </div>
-            <div class="will-reveal" style="display: flex; align-items: center; gap: 1.5rem; margin-top: 5rem;">
+            <div class="will-reveal ch7-attr-row" style="display: flex; align-items: center; gap: 1.5rem; margin-top: 5rem;">
                 <div class="ch-num" style="font-size: 5rem; border-right: 1px solid currentColor; padding-right: 1.5rem; opacity: 0.4; line-height: 1; flex-shrink: 0;">07</div>
                 <div class="attr" style="margin-top: 0; display: flex; flex-direction: column; justify-content: center;">
                     <strong>Gadi Bashvitz</strong>
-                    <span style="font-family: var(--font-sans); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.7;">Former CRO @Stitch Labs. Now CEO @Bright Security</span>
+                    <span style="font-family: var(--font-sans); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.7;">Former CRO @Stitch Labs<br> Now CEO @Bright Security</span>
                 </div>
             </div>
         </div>
@@ -1098,7 +1645,7 @@
     <div style="position: relative; z-index: 1;">
         <div class="chapter-label will-reveal" style="justify-content: flex-end; text-align: right;">
             <div class="ch-info" style="padding-left: 0; border-left: none; opacity: 1;">
-                <p class="ch-context" style="font-family: var(--font-sans); font-size: 0.94rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.7; color: #3a3a38;">His company was being absorbed. His product was being shut down.<br>He still used his name to open a door for Barbara.</p>
+                <p class="ch-context" style="font-family: var(--font-sans); font-size: 0.94rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.7; color: #3a3a38;">His company was being absorbed. His product was being shut down.<br>He still used his name to open a door&nbsp;for&nbsp;Barbara.</p>
             </div>
             <div class="ch-num" style="border-left: 1px solid currentColor; padding-left: 2rem;">08</div>
         </div>
@@ -1112,7 +1659,7 @@
         <div class="grid-2">
             <div>
                 <p class="q-body" id="brandon-quote" style="max-width: 75%; margin-top: 6rem;">
-                    "She has an incredible work ethic, open to learning, is extremely personable, and we were sad to have parted ways."
+                    "She has an incredible work ethic, open to learning, is extremely personable, and we were<br class="mob-br"> sad to have parted ways."
                 </p>
             </div>
 
@@ -1135,7 +1682,7 @@
 <!-- =========================================================
      CHAPTER 09 — EARLY CAREER
      ========================================================= -->
-<div class="marquee on-dark reverse">
+<div class="marquee on-dark reverse" id="marquee-ch9">
     <div class="marquee-track" style="animation-duration: 60s;">
         <span>FOUNDER DNA, ENTERPRISE SCALE.</span><span class="marquee-sep">✦</span><span>FOUNDER DNA, ENTERPRISE SCALE.</span><span class="marquee-sep">✦</span><span>FOUNDER DNA, ENTERPRISE SCALE.</span><span class="marquee-sep">✦</span><span>FOUNDER DNA, ENTERPRISE SCALE.</span><span class="marquee-sep">✦</span>
         <span>FOUNDER DNA, ENTERPRISE SCALE.</span><span class="marquee-sep">✦</span><span>FOUNDER DNA, ENTERPRISE SCALE.</span><span class="marquee-sep">✦</span><span>FOUNDER DNA, ENTERPRISE SCALE.</span><span class="marquee-sep">✦</span><span>FOUNDER DNA, ENTERPRISE SCALE.</span><span class="marquee-sep">✦</span>
@@ -1146,7 +1693,7 @@
 <section class="chapter dark" id="ch9-brittany" style="overflow: visible; padding-bottom: 100vh;">
 
     <div id="ch9-circle" style="display: flex; justify-content: flex-end; margin-right: 4rem; margin-bottom: 0; margin-top: -2rem; z-index: 0; position: relative; will-change: transform;">
-        <div style="width: clamp(280px, 38vw, 520px); height: clamp(280px, 38vw, 520px); border-radius: 50%; overflow: hidden; flex-shrink: 0; opacity: 1;">
+        <div class="ch9-circle-inner" style="width: clamp(280px, 38vw, 520px); height: clamp(280px, 38vw, 520px); border-radius: 50%; overflow: hidden; flex-shrink: 0; opacity: 1;">
             <img src="./diana-parkhouse-H8sqvuLE2CQ-unsplash.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
         </div>
     </div>
@@ -1157,13 +1704,20 @@
             <div class="ch-info">
                 <div class="ch-company">Brittany Harris</div>
                 <div class="ch-title">Enterprise Technology Executive</div>
-                <div class="ch-context" style="font-family: var(--font-sans); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.7; opacity: 0.75;">They met as founders. From trunk shows to global fashion tech.</div>
+                <div class="ch-context" style="font-family: var(--font-sans); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.7; opacity: 0.75;">They&nbsp;met&nbsp;as&nbsp;founders. From trunk shows to global fashion tech.</div>
             </div>
         </div>
 
-        <div class="q-giant will-reveal" style="font-size: clamp(2.75rem, 6.6vw, 8.25rem); margin-bottom: 4rem;">
+        <div class="q-giant will-reveal" id="ch9-headline-desktop" style="font-size: clamp(2.75rem, 6.6vw, 8.25rem); margin-bottom: 4rem;">
             <span class="clip"><span>THE ENTREPRENEURIAL HAT</span></span>
             <span class="clip"><span>NEVER COMES OFF.</span></span>
+        </div>
+
+        <div class="q-giant ch9-headline-mobile" id="ch9-headline-mobile-el" style="font-size: clamp(2.75rem, 6.6vw, 8.25rem); margin-bottom: 4rem;">
+            <div>THE</div>
+            <div>ENTREPRENEURIAL</div>
+            <div>HAT</div>
+            <div style="overflow: hidden;"><span class="ch9-word">NEVER</span> <span class="ch9-word">COMES</span> <span class="ch9-word">OFF.</span></div>
         </div>
 
         <div style="max-width: 524px;">
@@ -1190,16 +1744,16 @@
         <div class="ch-num">10</div>
         <div class="ch-info">
             <div class="ch-company">Linda Traylinic</div>
-            <div class="ch-context" style="font-family: var(--font-sans); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.7; opacity: 0.75;">Linda was the buyer. Barbara was the seller.</div>
+            <div class="ch-context" style="font-family: var(--font-sans); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.7; opacity: 0.75;">Linda was the buyer. Barbara<br class="mob-br"> was the seller.</div>
         </div>
     </div>
 
-    <div style="margin-left: 45%;">
+    <div class="ch10-quote-wrap" style="margin-left: 45%;">
         <div class="q-large" style="font-size: clamp(1.1rem, 2.2vw, 2rem); max-width: 35rem;">
             <span class="clip"><span>"I was impressed with... her passion for the needs of my customer."</span></span>
         </div>
     </div>
-    <div style="display: flex; justify-content: center; margin-top: 6rem; padding-right: 14%;">
+    <div class="ch10-image-wrap" style="display: flex; justify-content: center; margin-top: 6rem; padding-right: 14%;">
         <div class="ss-card will-reveal" data-rotation="0" style="max-width: 576px;">
             <img
                 src="./MY PROFESSIONAL REFERRALS %26 REFERENCES/Linda%20Traylinek%20-%20testimonial.png"
@@ -1213,7 +1767,7 @@
 <!-- =========================================================
      CLOSING
      ========================================================= -->
-<div class="marquee on-dark">
+<div class="marquee on-dark" id="marquee-closing">
     <div class="marquee-track">
         <span>STILL WANT MORE?</span><span class="marquee-sep">✦</span><span>STILL WANT MORE?</span><span class="marquee-sep">✦</span><span>STILL WANT MORE?</span><span class="marquee-sep">✦</span><span>STILL WANT MORE?</span><span class="marquee-sep">✦</span>
         <span>STILL WANT MORE?</span><span class="marquee-sep">✦</span><span>STILL WANT MORE?</span><span class="marquee-sep">✦</span><span>STILL WANT MORE?</span><span class="marquee-sep">✦</span><span>STILL WANT MORE?</span><span class="marquee-sep">✦</span>
@@ -1221,7 +1775,7 @@
 </div>
 
 <section class="closing" style="padding-top: 14rem;">
-    <div style="margin-left: 20%;">
+    <div class="closing-inner-wrap" style="margin-left: 20%;">
         <div class="closing-headline" style="margin-bottom: 0; font-size: clamp(4.48rem, 13.44vw, 15.68rem);">
             <span class="clip"><span>LET'S TALK.</span></span>
         </div>
@@ -1288,7 +1842,11 @@ document.querySelectorAll('.q-giant, .q-large, .closing-headline').forEach(el =>
 });
 
 // ---- Reusable: will-reveal ----
+const isMobileLayout = window.matchMedia('(max-width: 768px)').matches;
 document.querySelectorAll('.will-reveal').forEach(el => {
+    if (el.id === 'matt-card' && isMobileLayout) return; // mobile has its own particle-materialize animation
+    if (el.id === 'ch4-got-trust-headline' && isMobileLayout) return; // mobile has its own typewriter animation
+    if (el.id === 'gadi-card' && isMobileLayout) return; // mobile has its own peel-in animation, delayed after the headline
     ScrollTrigger.create({
         trigger: el,
         start: 'top 88%',
@@ -1303,9 +1861,31 @@ document.querySelectorAll('.will-reveal').forEach(el => {
     });
 });
 
+// ---- Ch4 "Got Trust?" headline — mobile only: letter-by-letter typewriter ----
+if (isMobileLayout) {
+    (function() {
+        const el = document.getElementById('ch4-got-trust-headline');
+        if (!el) return;
+        const fullText = el.textContent;
+        el.innerHTML = [...fullText].map(c => `<span class="tw-char">${c === ' ' ? '&nbsp;' : c}</span>`).join('');
+        el.style.opacity = '1';
+        gsap.set('#ch4-got-trust-headline .tw-char', { opacity: 0 });
+        ScrollTrigger.create({
+            trigger: el,
+            start: 'top 85%',
+            once: true,
+            onEnter: () => {
+                gsap.to('#ch4-got-trust-headline .tw-char', { opacity: 1, duration: 0.01, stagger: 0.06, ease: 'none' });
+            }
+        });
+    })();
+}
+
 // ---- Screenshots — staggered rotate+fade ----
 document.querySelectorAll('.ss-card').forEach((card, i) => {
     if (card.id === 'craig-card') return; // has its own custom animation
+    if (card.id === 'matt-card' && isMobileLayout) return; // mobile has its own particle-materialize animation
+    if (card.id === 'gadi-card' && isMobileLayout) return; // mobile has its own peel-in animation, delayed after the headline
     const finalRot = card.hasAttribute('data-rotation') ? parseFloat(card.dataset.rotation) : (card.style.transform.includes('-') ? -2 : 2);
     ScrollTrigger.create({
         trigger: card,
@@ -1341,6 +1921,89 @@ document.querySelectorAll('.ss-card').forEach((card, i) => {
         }
     });
 })();
+
+// ---- Matt card — mobile only: rack-focus reveal from right ----
+if (isMobileLayout) {
+    (function() {
+        const el = document.getElementById('matt-card');
+        if (!el) return;
+        const img = el.querySelector('img');
+        if (!img) return;
+        gsap.set(el, { opacity: 1, y: 0 });
+        el.style.overflow = 'visible'; // let the blur haze bleed past the frame edge during entrance
+        gsap.set(img, { opacity: 0, x: 40, scale: 1.06, filter: 'blur(24px)' });
+        ScrollTrigger.create({
+            trigger: el,
+            start: 'top 88%',
+            once: true,
+            onEnter: () => {
+                gsap.to(img, {
+                    opacity: 1,
+                    x: 0,
+                    scale: 1,
+                    filter: 'blur(0px)',
+                    duration: 1.7,
+                    ease: 'power2.out',
+                    onComplete: () => { el.style.overflow = 'hidden'; }
+                });
+            }
+        });
+    })();
+}
+
+// ---- Gadi card (Ch7) — mobile only: peel in left to right, starting after the headline animation finishes ----
+if (isMobileLayout) {
+    (function() {
+        const el = document.getElementById('gadi-card');
+        if (!el) return;
+        const headline = document.querySelector('#ch7-gadi .q-giant');
+        gsap.set(el, { clipPath: 'inset(0 100% 0 0)', opacity: 1, y: 0 });
+        ScrollTrigger.create({
+            trigger: headline || el,
+            start: 'top 82%',
+            once: true,
+            onEnter: () => {
+                gsap.timeline({ delay: 1.4 })
+                    .to(el, {
+                        clipPath: 'inset(0 0% 0 0)',
+                        duration: 1.6,
+                        ease: 'expo.out',
+                        onComplete: () => { el.style.clipPath = 'none'; }
+                    })
+                    .to(el, {
+                        boxShadow: '0 30px 70px rgba(120,118,112,0.45), 0 10px 26px rgba(90,88,84,0.35)',
+                        duration: 1.4,
+                        ease: 'power1.out'
+                    }, '-=0.3');
+            }
+        });
+    })();
+}
+
+// ---- Ch9 mobile headline — "NEVER COMES OFF." words slam in with big movement ----
+if (isMobileLayout) {
+    (function() {
+        const el = document.getElementById('ch9-headline-mobile-el');
+        if (!el) return;
+        const words = el.querySelectorAll('.ch9-word');
+        if (!words.length) return;
+        gsap.set(words, { opacity: 0, x: 220, display: 'inline-block' });
+        ScrollTrigger.create({
+            trigger: el,
+            start: 'top 80%',
+            once: true,
+            onEnter: () => {
+                gsap.to(words, {
+                    opacity: 1,
+                    x: 0,
+                    duration: 1.1,
+                    ease: 'power4.out',
+                    stagger: 0.15
+                });
+            }
+        });
+    })();
+}
 
 // ---- Craig card — peel in from left ----
 (function() {
@@ -1442,18 +2105,20 @@ document.querySelectorAll('.deco-quote').forEach(el => {
         start: 'top 85%',
         once: true,
         onEnter: () => {
+            const startDelay = isMobileLayout ? 0.6 : 0;
             gsap.to('#gadi-quote .tw-char', {
                 opacity: 1,
                 duration: 0.01,
                 stagger: 0.022,
-                ease: 'none'
+                ease: 'none',
+                delay: startDelay
             });
             gsap.to('#gadi-quote-2 .tw-char', {
                 opacity: 1,
                 duration: 0.01,
                 stagger: 0.022,
                 ease: 'none',
-                delay: part1Duration
+                delay: startDelay + part1Duration
             });
         }
     });
@@ -1474,7 +2139,8 @@ document.querySelectorAll('.deco-quote').forEach(el => {
                 opacity: 1,
                 duration: 0.01,
                 stagger: 0.022,
-                ease: 'none'
+                ease: 'none',
+                delay: isMobileLayout ? 0.6 : 0
             });
         }
     });
@@ -1485,7 +2151,7 @@ document.querySelectorAll('.deco-quote').forEach(el => {
     const el = document.getElementById('brandon-quote');
     const attr = document.getElementById('brandon-attr');
     if (!el || !attr) return;
-    const parts = el.innerHTML.split(/(<br\s*\/?>)/i);
+    const parts = el.innerHTML.split(/(<br[^>]*>)/i);
     el.innerHTML = parts.map(part =>
         /^<br/i.test(part) ? part : part.split('').map(c => `<span class="tw-char">${c}</span>`).join('')
     ).join('');
@@ -1497,7 +2163,7 @@ document.querySelectorAll('.deco-quote').forEach(el => {
     gsap.set(attr, { opacity: 0, y: 30 });
     ScrollTrigger.create({
         trigger: el,
-        start: 'top 75%',
+        start: isMobileLayout ? 'top 90%' : 'top 75%',
         once: true,
         onEnter: () => {
             gsap.to(chars, { opacity: 1, duration: 0.01, stagger: stagger, ease: 'none' });
@@ -1652,6 +2318,7 @@ ScrollTrigger.create({
 // ---- Parallax bg words ----
 document.querySelectorAll('.bg-word').forEach(el => {
     if (el.id === 'ch8-bg-word') return; // sticky pin — skip parallax
+    if (el.id === 'ch4-bg-word' && isMobileLayout) return; // mobile has its own pop-in/shrink-out animation
     gsap.to(el, {
         y: -120,
         ease: 'none',
@@ -1663,6 +2330,47 @@ document.querySelectorAll('.bg-word').forEach(el => {
         }
     });
 });
+
+// ---- Ch4 bg-word "RELATIONSHIPS" — mobile only: pop in, then slowly shrink + fade out ----
+if (isMobileLayout) {
+    (function() {
+        const el = document.getElementById('ch4-bg-word');
+        if (!el) return;
+        gsap.set(el, { opacity: 0, scale: 0.4 });
+        ScrollTrigger.create({
+            trigger: el.parentElement,
+            start: 'top 75%',
+            once: true,
+            onEnter: () => {
+                gsap.timeline()
+                    .to(el, { opacity: 1, scale: 1.07, duration: 2.6, ease: 'power2.out' })
+                    .to(el, { opacity: 0, scale: 0.15, duration: 3.2, ease: 'power1.inOut' });
+            }
+        });
+    })();
+}
+
+// ---- Ch6 headline "MOST RESIGNATIONS..." — mobile only: line 1 comes in oversized, line 2 follows immediately after it lands ----
+if (isMobileLayout) {
+    (function() {
+        const el = document.getElementById('ch6-headline');
+        if (!el) return;
+        const lines = el.querySelectorAll(':scope > .clip');
+        if (!lines.length) return;
+        gsap.set(el, { scale: 1, opacity: 1 });
+        gsap.set(lines, { scale: 1.6, opacity: 0, transformOrigin: 'center center' });
+        ScrollTrigger.create({
+            trigger: el,
+            start: 'top 80%',
+            once: true,
+            onEnter: () => {
+                gsap.timeline()
+                    .to(lines[0], { scale: 1, opacity: 1, duration: 1.4, ease: 'power2.out' })
+                    .to(lines[1], { scale: 1, opacity: 1, duration: 1.4, ease: 'power2.out' }, '-=0.2');
+            }
+        });
+    })();
+}
 
 
 // ---- Chapter labels ----
@@ -1688,11 +2396,12 @@ document.querySelectorAll('.chapter-label').forEach(el => {
         span.style.opacity = '0';
         el.appendChild(span);
     });
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
     gsap.to(el.querySelectorAll('span'), {
         opacity: 1,
         duration: 0.001,
         stagger: 0.04,
-        delay: 2.4,
+        delay: isMobile ? 1.0 : 2.4,
         ease: 'none'
     });
 })();
